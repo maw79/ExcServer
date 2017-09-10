@@ -9,11 +9,6 @@
 #include <iostream>
 using namespace std;
 
-void MainLoop()
-{
-
-}
-
 void orderReq()
 {
     

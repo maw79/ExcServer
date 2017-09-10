@@ -8,3 +8,8 @@ void MainMenu()
 {
 
 }
+
+void MainLoop()
+{
+
+}
