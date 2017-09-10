@@ -11,7 +11,12 @@ using namespace std;
 
 //MAIN SEQUENCE
 
-//FUNCTION 1
+/*
+ * Function : MainLoop()
+ * Arguments : None
+ * Return : Void
+ * Functionality : to provide the main loop for the main menu
+ */
 //Customer provides order request and customer account Id to pay for purchase
 void orderReq()
 {

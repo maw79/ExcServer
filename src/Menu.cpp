@@ -16,6 +16,14 @@ void MainLoop()
 
 }
 
+/*
+ * Function : MainMenu()
+ * Arguments : None
+ * Return : Void
+ * Functionality : to provide the main menu to the user through the Terminal application so
+ *                 that they can interact with the program.
+ */
+
 void MainMenu()
 {
 
