@@ -34,7 +34,7 @@ void createOrder()
     
 }
 
-void Confirmation()
+void displayConfirmation()
 {
 
 }
