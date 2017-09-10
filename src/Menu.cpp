@@ -4,12 +4,19 @@
 
 #include "Menu.h"
 
-void MainMenu()
+/*
+ * Function : MainLoop()
+ * Arguments : None
+ * Return : Void
+ * Functionality : to provide the main loop for the main menu
+ */
+
+void MainLoop()
 {
 
 }
 
-void MainLoop()
+void MainMenu()
 {
 
 }
