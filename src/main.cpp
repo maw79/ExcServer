@@ -34,8 +34,15 @@ void displayConfirmation()
 
 }
 
+void noAccount()
+{
 
+}
 
+void denied()
+{
+
+}
 
 int main()
 {
