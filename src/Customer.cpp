@@ -4,7 +4,8 @@
 
 #include "Customer.h"
 
-std::string nameArray[] = {"Bob Dillon", "James Dean", "Jimmy Hendrix", "Brian Johnson", "Steven Tyler"};
+using namespace std;
+string nameArray[] = {"Bob Dillon", "James Dean", "Jimmy Hendrix", "Brian Johnson", "Steven Tyler"};
 
 Customer::Customer()
 {
@@ -12,7 +13,7 @@ Customer::Customer()
     Customer::name = nameArray[ranNum];
 }
 
-Customer::Customer(std::string name, std::string address, Date expDate, int accountID, int CCnum, int svc, int zip)
+Customer::Customer(string name, string address, Date expDate, int accountID, int CCnum, int svc, int zip)
 {
     Customer::name = name;
     Customer::address = address;

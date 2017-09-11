@@ -10,11 +10,13 @@
 #include "Date.h"
 #include <math.h>
 
+using namespace std;
+
 class Customer{
 
 private:
-    std::string name;
-    std::string address;
+    string name;
+    string address;
     Date expDate;
     int accountID;
     int CCnum;
@@ -23,10 +25,10 @@ private:
 
 public:
     Customer::Customer();
-    Customer::Customer(std::string name, std::string address, Date expDate, int accountID, int CCnum, int svc, int zip);
+    Customer::Customer(string name, string address, Date expDate, int accountID, int CCnum, int svc, int zip);
 
-    std::string Customer::getName(){return name;}
-    std::string Customer::getAddress(){return address;}
+    string Customer::getName(){return name;}
+    string Customer::getAddress(){return address;}
     Date Customer::getExpDate(){return expDate;}
     int Customer::getAccountID(){return accountID;}
     int Customer::getCCnum(){return CCnum;}
