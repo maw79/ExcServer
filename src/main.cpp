@@ -33,7 +33,7 @@ void orderReq()
     cin >> productID;
     if(productID != null)
     {
-        cout << "Specify Amount:";
+        cout << "Specify Amount: ";
         cin >> productAmount;
     }
     else
