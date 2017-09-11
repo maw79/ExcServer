@@ -34,15 +34,18 @@ void orderReq()
     cout << "Account ID: " << customer1.getAccountID() << endl;
     cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
     cout << "Item to buy: " << product1.getName() << endl;
-    cout << "Price of item: " << product1.getPrice() << endl;
+    cout << "Price of item: $" << product1.getPrice() << endl;
 
     cout << endl;
     Customer customer2;
+    Product product2;
     cout << "CUSTOMER DETAILS:" << endl;
     cout << "Name: " << customer2.getName() << endl;
     cout << "Address: " << customer2.getAddress() << endl;
     cout << "Account ID: " << customer2.getAccountID() << endl;
     cout << "Credit Card Number: " << customer2.getCC().getCCnum() << endl;
+    cout << "Item to buy: " << product2.getName() << endl;
+    cout << "Price of item: $" << product2.getPrice() << endl;
 
 
 }
