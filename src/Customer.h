@@ -11,6 +11,7 @@ class Customer{
     int expDate;
     int svc;
     string zip;
+    string address;
 };
 
 #endif //EXCSERVER_CUSTOMER_H
