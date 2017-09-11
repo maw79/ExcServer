@@ -3,7 +3,6 @@
 //
 
 #include "Customer.h"
-#include <ctime>
 
 using namespace std;
 string nameArray[] = {"Bob Dillon", "James Dean", "Jimmy Hendrix", "Brian Johnson", "Steve Tyler"};
