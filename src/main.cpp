@@ -15,7 +15,7 @@ using namespace std;
  * Function : orderReq()
  * Arguments : None
  * Return : Void
- * Functionality : From the main menu the Customer provides order request and customer account Id to pay for purchase
+ * Functionality : From the main menu the Customer provides order request and customer account ID to pay for purchase
  *                 as well as selecting the item to purchase.
  */
 void orderReq()
