@@ -5,7 +5,7 @@
 #include "Customer.h"
 
 using namespace std;
-string nameArray[] = {"Bob Dillon", "James Dean", "Jimmy Hendrix", "Brian Johnson", "Steven Tyler"};
+string nameArray[] = {"Bob Dillon", "James Dean", "Jimmy Hendrix", "Brian Johnson", "Steve Tyler"};
 
 Customer::Customer()
 {
