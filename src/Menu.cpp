@@ -15,7 +15,7 @@ bool Select = false;
 
 void MainLoop()
 {
-    while(! Select)
+    while(Select != true)
     {
         cout << "Item 1: Fag Shoes" << endl;
     }
