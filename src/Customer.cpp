@@ -13,7 +13,8 @@ Customer::Customer()
     Customer::name = nameArray[ranNum];
     Customer::accountID = rand() & 8999999999 + 1000000000;
     Customer::address = "P. Sherman, 42 Wallaby Way, Sydney, DEATH PLACE";
-    Credit creditC;
+    Credit CC;
+    Customer::creditC = CC;
 }
 
 Customer::Customer(string name, string address, long long int accountID, Credit creditC)
