@@ -11,7 +11,8 @@
 #include <math.h>
 
 class Customer{
-public:
+
+private:
     std::string name;
     std::string address;
     Date expDate;
@@ -20,6 +21,7 @@ public:
     int svc;
     int zip;
 
+public:
     Customer::Customer();
     Customer::Customer(std::string name, std::string address, Date expDate, int accountID, int CCnum, int svc, int zip);
 
