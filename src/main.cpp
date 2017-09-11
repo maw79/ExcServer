@@ -8,8 +8,8 @@
 
 #include <iostream>
 #include <string>
-#import "Menu.h"
-#import "Error.h"
+#include "Menu.h"
+#include "Error.h"
 using namespace std;
 
 //MAIN SEQUENCE
@@ -34,7 +34,7 @@ void orderReq()
     if(productID != null)
     {
         cout << "Specify Amount:";
-        cin >> amount;
+        cin >> productAmount;
     }
     else
     {
