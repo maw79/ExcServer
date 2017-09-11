@@ -31,7 +31,8 @@ void pullData()
 }
 
 //FUNCTION 3
-//System requests to a bank checking the customer’s credit card for the purchase amount and, if approved, creates a credit card purchase authorization number.
+//System requests to a bank checking the customer’s credit card for the purchase amount and, if approved, creates a
+//credit card purchase authorization number.
 void bankCheck()
 {
     
@@ -44,8 +45,12 @@ void createOrder()
     
 }
 
-//FUNCTION 5
-//System confirms approval of purchase and displays order information to customer.
+/*
+ * Function : displayConfirmation()
+ * Arguments : None
+ * Return : Void
+ * Functionality : System confirms approval of purchase and displays order information to customer.
+ */
 void displayConfirmation()
 {
 
@@ -53,21 +58,29 @@ void displayConfirmation()
 
 //ALTERNATIVE SEQUENCES
 
-//FUNCTION 1
-//If customer does not have an account, the system prompts the
-//customer to provide information in order to create a new account. The
-//customer can either enter the account information or cancel the order.
-void noAccount()
+/*
+ * Function : invalidAccount()
+ * Arguments : None
+ * Return : Void
+ * Functionality : If customer does not have an account, the system prompts the
+                   customer to provide information in order to create a new account. The
+                   customer can either enter the account information or cancel the order.
+ */
+void invalidAccount()
 {
 
 }
 
-//FUNCTION 2
-// If authorization of the customer’s credit card is denied (e.g., invalid
-//credit card or insufficient funds in the customer’s credit card account), the
-//system prompts the customer to enter a different credit card number. The
-//customer can either enter a different credit card number or cancel the order.
-void denied()
+/*
+* Function : accessDenied()
+* Arguments : None
+* Return : Void
+* Functionality : If authorization of the customer’s credit card is denied (e.g., invalid
+                  credit card or insufficient funds in the customer’s credit card account), the
+                  system prompts the customer to enter a different credit card number. The
+                  customer can either enter a different credit card number or cancel the order.
+*/
+void accessDenied()
 {
 
 }
