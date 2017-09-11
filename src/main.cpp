@@ -28,12 +28,19 @@ void orderReq()
     cout << "Order Request Details:";
 
     cout << "Enter Customer Account ID:";
-
+    cin >> accountID;
     cout << "Specify Product Name: ";
-    cin >> product;
-    if(product )
-    cout << "Specify Amount:";
-    cin >> amount;
+    cin >> productID;
+    if(productID != null)
+    {
+        cout << "Specify Amount:";
+        cin >> amount;
+    }
+    else
+    {
+        cout << "Error 404: Product not found!";
+    }
+
 
 }
 
