@@ -8,8 +8,8 @@ std::string nameArray[] = {"Bob Dillon", "James Dean", "Jimmy Hendrix", "Brian J
 
 Customer::Customer()
 {
-    int rannum = rand() % (sizeof(nameArray)/sizeof(*nameArray));
-    Customer::name = nameArray[rannum];
+    int ranNum = rand() % (sizeof(nameArray)/sizeof(*nameArray));
+    Customer::name = nameArray[ranNum];
 }
 
 Customer::Customer(std::string name, std::string address, Date expDate, int accountID, int CCnum, int svc, int zip)
