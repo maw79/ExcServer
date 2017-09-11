@@ -24,16 +24,16 @@ private:
     int zip;
 
 public:
-    Customer::Customer();
-    Customer::Customer(string name, string address, Date expDate, int accountID, int CCnum, int svc, int zip);
+    Customer();
+    Customer(string name, string address, Date expDate, int accountID, int CCnum, int svc, int zip);
 
-    string Customer::getName(){return name;}
-    string Customer::getAddress(){return address;}
-    Date Customer::getExpDate(){return expDate;}
-    int Customer::getAccountID(){return accountID;}
-    int Customer::getCCnum(){return CCnum;}
-    int Customer::getSvc(){return svc;}
-    int Customer::getZip(){return zip;}
+    string getName(){return name;}
+    string getAddress(){return address;}
+    Date getExpDate(){return expDate;}
+    int getAccountID(){return accountID;}
+    int CgetCCnum(){return CCnum;}
+    int getSvc(){return svc;}
+    int getZip(){return zip;}
 };
 
 #endif //EXCSERVER_CUSTOMER_H
