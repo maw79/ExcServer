@@ -25,12 +25,6 @@ void orderReq()
 {
     int productID = 1, productAmount = 5, accountID = 0001;
 
-    cout << "Order Request Details:";
-
-    cout << "Enter Customer Account ID:";
-    cin >> accountID;
-    cout << "Specify Product Name: ";
-    cin >> productID;
 
 }
 
@@ -40,6 +34,7 @@ void orderReq()
  * Return : Void
  * Functionality : The System will retrieve customer account information, including the customer’s credit card details.
  */
+/*
 void pullData()
 {
     
@@ -52,6 +47,7 @@ void pullData()
  * Functionality : The System requests to a bank checking the customer’s credit card for the purchase amount and,
  *                 if approved, creates a credit card purchase authorization number.
  */
+/*
 void bankCheck()
 {
 
@@ -64,6 +60,8 @@ void bankCheck()
  * Functionality : The system creates a delivery order containing order details, customer Id,
  *                 and credit card authorization number
  */
+
+/*
 void createOrder()
 {
     
@@ -75,6 +73,7 @@ void createOrder()
  * Return : Void
  * Functionality : System confirms approval of purchase and displays order information to customer.
  */
+/*
 void displayConfirmation()
 {
 
@@ -90,6 +89,7 @@ void displayConfirmation()
                    customer to provide information in order to create a new account. The
                    customer can either enter the account information or cancel the order.
  */
+/*
 void invalidAccount()
 {
 
@@ -104,12 +104,13 @@ void invalidAccount()
                   system prompts the customer to enter a different credit card number. The
                   customer can either enter a different credit card number or cancel the order.
 */
-void accessDenied()
+/*void accessDenied()
 {
 
-}
+}*/
 
 int main()
 {
-    MainMenu();
+    //MainMenu();
+    orderReq();
 }
