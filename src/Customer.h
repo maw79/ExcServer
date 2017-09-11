@@ -18,19 +18,17 @@ class Customer{
 private:
     string name;
     string address;
+    Credit creditC;
     long long int accountID;
 
 public:
     Customer();
-    Customer(string name, string address, Date expDate, long long int accountID, long long int CCnum, int svc, int zip);
+    Customer(string name, string address, long long int accountID, Credit creditC);
 
     string getName(){return name;}
     string getAddress(){return address;}
-    Date getExpDate(){return expDate;}
     long long int getAccountID(){return accountID;}
-    long long int getCCnum(){return CCnum;}
-    int getSvc(){return svc;}
-    int getZip(){return zip;}
+    Credit getCC(){return creditC;}
 };
 
 #endif //EXCSERVER_CUSTOMER_H
