@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <string>
 #import "Menu.h"
 #import "Error.h"
 using namespace std;
@@ -17,12 +18,23 @@ using namespace std;
  * Function : orderReq()
  * Arguments : None
  * Return : Void
- * Functionality : From the main menu the Customer provides order request and customer account ID to pay for purchase
+ * Functionality : From the main menu the customer provides order request and customer account ID to pay for purchase
  *                 as well as selecting the item to purchase.
  */
 void orderReq()
 {
-    
+    int productID = 0, productAmount = 0, accountID = 0;
+
+    cout << "Order Request Details:";
+
+    cout << "Enter Customer Account ID:";
+
+    cout << "Specify Product Name: ";
+    cin >> product;
+    if(product )
+    cout << "Specify Amount:";
+    cin >> amount;
+
 }
 
 /*
@@ -102,5 +114,5 @@ void accessDenied()
 
 int main()
 {
-    
+    MainMenu();
 }
