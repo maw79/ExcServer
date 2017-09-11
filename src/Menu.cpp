@@ -4,6 +4,8 @@
 
 #include "Menu.h"
 
+bool Select = false;
+
 /*
  * Function : MainLoop()
  * Arguments : None
@@ -13,7 +15,10 @@
 
 void MainLoop()
 {
-
+    while(! Select)
+    {
+        cout << "Item 1: Fag Shoes" << endl;
+    }
 }
 
 /*
@@ -26,5 +31,6 @@ void MainLoop()
 
 void MainMenu()
 {
-
+    cout << "Welcome to the menu" << endl;
+    MainLoop();
 }
