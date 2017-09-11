@@ -12,34 +12,42 @@ using namespace std;
 //MAIN SEQUENCE
 
 /*
- * Function : MainLoop()
+ * Function : orderReq()
  * Arguments : None
  * Return : Void
- * Functionality : to provide the main loop for the main menu
+ * Functionality : From the main menu the Customer provides order request and customer account Id to pay for purchase
+ *                 as well as selecting the item to purchase.
  */
-//Customer provides order request and customer account Id to pay for purchase
 void orderReq()
 {
     
 }
 
-//FUNCTION 2
-// System retrieves customer account information, including the customer’s credit card details.
+/*
+ * Function : pullData()
+ * Arguments : None
+ * Return : Void
+ * Functionality : The System will retrieve customer account information, including the customer’s credit card details.
+ */
 void pullData()
 {
     
 }
 
 //FUNCTION 3
-//System requests to a bank checking the customer’s credit card for the purchase amount and, if approved, creates a
-//credit card purchase authorization number.
+//System requests to a bank checking the customer’s credit card for the purchase amount and, if approved, creates a credit card purchase authorization number.
 void bankCheck()
 {
     
 }
 
-//FUNCTION 4
-//System creates a delivery order containing order details, customer Id, and credit card authorization number
+/*
+ * Function : bankCheck()
+ * Arguments : None
+ * Return : Void
+ * Functionality : The system creates a delivery order containing order details, customer Id,
+ *                 and credit card authorization number
+ */
 void createOrder()
 {
     
