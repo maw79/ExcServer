@@ -23,7 +23,7 @@ using namespace std;
  */
 void orderReq()
 {
-    int productID = 0, productAmount = 0, accountID = 0;
+    int productID = 1, productAmount = 5, accountID = 0001;
 
     cout << "Order Request Details:";
 
@@ -31,16 +31,6 @@ void orderReq()
     cin >> accountID;
     cout << "Specify Product Name: ";
     cin >> productID;
-    if(productID != NULL)
-    {
-        cout << "Specify Amount: ";
-        cin >> productAmount;
-    }
-    else
-    {
-        cout << "Error 404: Product not found!";
-    }
-
 
 }
 
