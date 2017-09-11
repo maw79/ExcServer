@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include "Date.h"
+#include <math.h>
 
 class Customer{
 public:

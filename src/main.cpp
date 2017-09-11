@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include "Customer.h"
+#include "Date.h"
 using namespace std;
 
 //MAIN SEQUENCE
