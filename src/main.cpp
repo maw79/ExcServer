@@ -31,7 +31,8 @@ void orderReq()
     cin >> accountID;
     cout << "Specify Product Name: ";
     cin >> productID;
-    if(productID != null)
+    int amount ;
+    if(productID != NULL)
     {
         cout << "Specify Amount: ";
         cin >> productAmount;
