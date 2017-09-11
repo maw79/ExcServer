@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class{
+class Credit{
 private:
     int CCnum0, CCnum1, CCnum2, CCnum3;
     Date expDate;
@@ -20,9 +20,12 @@ private:
 
 public:
     Credit();
-    Credit(int CCnum0,int CCnum1,int CCnum2,int CCnum3);
+    Credit(int CCnum0,int CCnum1,int CCnum2,int CCnum3, Date expDate, int svc, int zip);
 
-    string getCCnum(){return (CCnum0 + " " + CCnum1 + " " + CCnum2 + " " + CCnum3);}
+    string getCCnum(){return (to_string(CCnum0) + " " + to_string(CCnum1) + " " + to_string(CCnum2) + " " + to_string(CCnum3));}
+    Date getExpDate(){return expDate;}
+    int getSvc(){return svc;}
+    int getZip(){return zip;}
 };
 
 #endif //UNTITLED_CREDIT_H
