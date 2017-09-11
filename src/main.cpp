@@ -7,6 +7,8 @@
 //
 
 #include <iostream>
+#import "Menu.h"
+#import "Error.h"
 using namespace std;
 
 //MAIN SEQUENCE
