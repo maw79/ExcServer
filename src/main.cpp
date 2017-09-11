@@ -10,6 +10,8 @@
 #include <string>
 #include "Customer.h"
 #include "Date.h"
+#include "Credit.h"
+#include "Product.h"
 using namespace std;
 
 //MAIN SEQUENCE
@@ -25,12 +27,16 @@ void orderReq()
 {
     int productID = 1, productAmount = 5, accountID = 0001;
     Customer customer1;
+    Product product1;
     cout << "CUSTOMER DETAILS:" << endl;
     cout << "Name: " << customer1.getName() << endl;
     cout << "Address: " << customer1.getAddress() << endl;
     cout << "Account ID: " << customer1.getAccountID() << endl;
     cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
+    cout << "Item to buy: " << product1.getName() << endl;
+    cout << "Price of item: " << product1.getPrice() << endl;
 
+    cout << endl;
     Customer customer2;
     cout << "CUSTOMER DETAILS:" << endl;
     cout << "Name: " << customer2.getName() << endl;
