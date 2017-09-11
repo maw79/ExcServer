@@ -8,8 +8,7 @@
 
 #include <iostream>
 #include <string>
-#include "Menu.h"
-#include "Error.h"
+#include "Customer.h"
 using namespace std;
 
 //MAIN SEQUENCE
@@ -24,7 +23,6 @@ using namespace std;
 void orderReq()
 {
     int productID = 1, productAmount = 5, accountID = 0001;
-
 
 }
 

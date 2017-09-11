@@ -5,15 +5,20 @@
 #ifndef EXCSERVER_CUSTOMER_H
 #define EXCSERVER_CUSTOMER_H
 
+#include <string>
+#include <iostream>
+
 class Customer{
 public:
-    string name;
+    std::string name;
     int accountID;
     int CCnum;
     int expDate;
     int svc;
-    string zip;
-    string address;
+    std::string zip;
+    std::string address;
+
+    Customer::Customer();
 };
 
 #endif //EXCSERVER_CUSTOMER_H

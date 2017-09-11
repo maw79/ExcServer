@@ -4,6 +4,7 @@
 
 #include "Customer.h"
 #include <math.h>
+#include <string>
 
 Customer::Customer()
 {
