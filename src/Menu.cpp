@@ -18,6 +18,11 @@ void MainLoop()
     while(Select != true)
     {
         cout << "Item 1: Fag Shoes" << endl;
+        cout << "Item 2: Fag Shirt" << endl;
+        cout << "Item 1: Fag Socks" << endl;
+        cout << "Item 2: Fag Pants" << endl;
+        cout << "Item 1: Fag Underwear" << endl;
+        cout << "Item 2: Fag Hat" << endl;
     }
 }
 
