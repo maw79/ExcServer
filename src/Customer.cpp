@@ -11,10 +11,10 @@ Customer::Customer()
 {
     int ranNum = rand() % (sizeof(nameArray)/sizeof(*nameArray));
     Customer::name = nameArray[ranNum];
-    Customer::zip = rand() % 99999;
-    Customer::svc = rand() % 999;
-    Customer::CCnum = rand() % 9999999999999999;
-    Customer::accountID = rand() & 9999999999;
+    Customer::zip = rand() % 89999 + 10000;
+    Customer::svc = rand() % 899 + 100;
+    Customer::CCnum = rand() % 8999999999999999 + 1000000000000000;
+    Customer::accountID = rand() & 8999999999 + 1000000000;
     Customer::expDate = Date(rand() % 30, rand() % 12, rand() % 10 + 2010);
     Customer::address = "P. Sherman, 42 Wallaby Way, Sydney, DEATH PLACE";
 
