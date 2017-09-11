@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Date.h"
 #include <math.h>
+#include "Credit.h"
 
 using namespace std;
 
@@ -17,11 +18,7 @@ class Customer{
 private:
     string name;
     string address;
-    Date expDate;
     long long int accountID;
-    long long int CCnum;
-    int svc;
-    int zip;
 
 public:
     Customer();
