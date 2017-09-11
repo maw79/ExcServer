@@ -18,20 +18,20 @@ private:
     string name;
     string address;
     Date expDate;
-    int accountID;
-    int CCnum;
+    long long int accountID;
+    long long int CCnum;
     int svc;
     int zip;
 
 public:
     Customer();
-    Customer(string name, string address, Date expDate, int accountID, int CCnum, int svc, int zip);
+    Customer(string name, string address, Date expDate, long long int accountID, long long int CCnum, int svc, int zip);
 
     string getName(){return name;}
     string getAddress(){return address;}
     Date getExpDate(){return expDate;}
-    int getAccountID(){return accountID;}
-    int CgetCCnum(){return CCnum;}
+    long long int getAccountID(){return accountID;}
+    long long int CgetCCnum(){return CCnum;}
     int getSvc(){return svc;}
     int getZip(){return zip;}
 };
