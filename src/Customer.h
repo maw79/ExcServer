@@ -31,7 +31,7 @@ public:
     string getAddress(){return address;}
     Date getExpDate(){return expDate;}
     long long int getAccountID(){return accountID;}
-    long long int CgetCCnum(){return CCnum;}
+    long long int getCCnum(){return CCnum;}
     int getSvc(){return svc;}
     int getZip(){return zip;}
 };
