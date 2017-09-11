@@ -3,3 +3,9 @@
 //
 
 #include "Customer.h"
+#include <math.h>
+
+Customer::Customer()
+{
+
+}

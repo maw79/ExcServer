@@ -6,8 +6,10 @@
 #define EXCSERVER_CUSTOMER_H
 
 class Customer{
+public:
     string name;
     int accountID;
+    int CCnum;
     int expDate;
     int svc;
     string zip;
