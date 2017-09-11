@@ -34,15 +34,20 @@ void pullData()
     
 }
 
-//FUNCTION 3
-//System requests to a bank checking the customer’s credit card for the purchase amount and, if approved, creates a credit card purchase authorization number.
+/*
+ * Function : bankCheck()
+ * Arguments : None
+ * Return : Void
+ * Functionality : The System requests to a bank checking the customer’s credit card for the purchase amount and,
+ *                 if approved, creates a credit card purchase authorization number.
+ */
 void bankCheck()
 {
-    
+
 }
 
 /*
- * Function : bankCheck()
+ * Function : createOrder()
  * Arguments : None
  * Return : Void
  * Functionality : The system creates a delivery order containing order details, customer Id,
