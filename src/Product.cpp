@@ -5,13 +5,13 @@
 #include "Product.h"
 
 using namespace std;
-string nameArray[] = {"Kershaw Knife", "Beretta 9mm", "M1A1 Abrams Tank", "100 Gallon Gas Tank (GAS INCLUDED)", "200x9mm Rounds", "Tesla Model 7"};
+string namesArray[] = {"Kershaw Knife", "Beretta 9mm", "M1A1 Abrams Tank", "100 Gallon Gas Tank (GAS INCLUDED)", "200x9mm Rounds", "Tesla Model 7"};
 int priceArray[] = {30, 500, 20000000, 500, 46, 80000};
 
 Product::Product()
 {
-    int ranNum = rand() % (sizeof(nameArray)/sizeof(*nameArray));
-    Product::name = nameArray[ranNum];
+    int ranNum = rand() % (sizeof(namesArray)/sizeof(*namesArray));
+    Product::name = namesArray[ranNum];
     Product::code = rand() % 89999 + 10000;
     Product::price = priceArray[ranNum];
 }
