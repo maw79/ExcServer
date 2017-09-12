@@ -43,18 +43,12 @@ bool CustomerList::makeCustomer()
 
 Customer CustomerList::popCustomer()
 {
-    if(conductor->next == 0)
-    {
-        Customer ret = conductor->cust;
-        delete conductor->cust;
-        conductor = conductor->previous;
-        delete conductor->next;
-        return ret;
-    }
-    else
-    {
-        return NULL;
-    }
+    Customer ret = conductor->cust;
+    //delete conductor->cust;
+    conductor->next = conductor;
+    conductor = conductor->previous;
+    delete conductor->next;
+    return ret;
 }
 
 bool CustomerList::moveDown()
@@ -62,11 +56,32 @@ bool CustomerList::moveDown()
     if(conductor->next != 0)
     {
         conductor->next = conductor->next->next;
-
+        conductor->previous = conductor;
+        conductor = conductor->next;
         return true;
     }
     else
     {
         return false;
     }
+}
+
+bool CustomerList::moveUP()
+{
+    if(conductor->previous != 0)
+    {
+        conductor->previous = conductor->previous->previous;
+        conductor->next = conductor;
+        conductor = conductor->previous;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+Customer CustomerList::getCustomer()
+{
+    return conductor->cust;
 }

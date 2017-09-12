@@ -5,7 +5,7 @@
 #ifndef UNTITLED_CUSTOMERLIST_H
 #define UNTITLED_CUSTOMERLIST_H
 
-#import "Customer.h"
+#include "Customer.h"
 
 using namespace std;
 
@@ -27,12 +27,7 @@ public:
     bool moveUP();
     bool moveDown();
 
-
-    Customer nextCustomer();
-    Customer previousCustomer();
-    Customer custatLoc(int Loc);
-    Customer getCustomer(Customer);
-
+    Customer getCustomer();
 };
 
 #endif //UNTITLED_CUSTOMERLIST_H
