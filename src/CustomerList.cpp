@@ -61,6 +61,8 @@ bool CustomerList::moveDown()
 {
     if(conductor->next != 0)
     {
+        conductor->next = conductor->next->next;
+
         return true;
     }
     else
