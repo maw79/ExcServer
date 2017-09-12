@@ -144,9 +144,9 @@ void invalidAccount()
 int main()
 {
     //MainMenu();
-    cout << seededNum() << endl;
-    cout << seededNum() << endl;
-    cout << seededNum() << endl;
-    cout << seededNum() << endl;
+    //cout << seededNum() << endl;
+    //cout << seededNum() << endl;
+    //cout << seededNum() << endl;
+    //cout << seededNum() << endl;
     orderReq();
 }

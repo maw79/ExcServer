@@ -3,12 +3,14 @@
 //
 
 #include "Customer.h"
+#include <ctime>
 
 using namespace std;
 string nameArray[] = {"Bob Dillon", "James Dean", "Jimmy Hendrix", "Brian Johnson", "Steve Tyler"};
 
 Customer::Customer()
 {
+    srand(time(NULL));
     int ranNum = rand() % (sizeof(nameArray)/sizeof(*nameArray));
     Customer::name = nameArray[ranNum];
     Customer::accountID = rand() % 8999999999 + 1000000000;
