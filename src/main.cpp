@@ -12,7 +12,17 @@
 #include "Date.h"
 #include "Credit.h"
 #include "Product.h"
+#include <ctime>
 using namespace std;
+
+//testing seeded random functionality
+int seededNum()
+{
+    srand(time(NULL));
+    int num = rand() % 100;
+    return num;
+}
+
 
 //MAIN SEQUENCE
 
@@ -25,7 +35,6 @@ using namespace std;
  */
 void orderReq()
 {
-    int productID = 1, productAmount = 5, accountID = 0001;
     Customer customer1;
     Product product1;
     cout << "CUSTOMER DETAILS:" << endl;
@@ -37,6 +46,7 @@ void orderReq()
     cout << "Price of item: $" << product1.getPrice() << endl;
 
     cout << endl;
+
     Customer customer2;
     Product product2;
     cout << "CUSTOMER DETAILS:" << endl;
@@ -134,5 +144,9 @@ void invalidAccount()
 int main()
 {
     //MainMenu();
+    cout << seededNum() << endl;
+    cout << seededNum() << endl;
+    cout << seededNum() << endl;
+    cout << seededNum() << endl;
     orderReq();
 }
