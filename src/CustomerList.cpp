@@ -9,6 +9,7 @@ CustomerList::CustomerList()
 {
     root = new custList;
     root->next = 0;
+    root->previous = 0;
     Customer first;
     root->cust = first;
     conductor = root;
@@ -16,8 +17,27 @@ CustomerList::CustomerList()
 
 void CustomerList::makeCustomer()
 {
-    Customer add;
+    Customer n;
+    conductor->previous = conductor;
     conductor->next = new custList;
     conductor = conductor->next;
-    conductor->cust = add;
+    conductor->cust = n;
+    conductor->next = 0;
 }
+
+Customer CustomerList::popCustomer()
+{
+    custList *n = ;
+    delete conductor->cust;
+    conductor = conductor->previous;
+}
+
+/*
+int popValue(){
+    Node *n = head;
+    int ret = n->x;
+
+    head = head->next;
+    delete n;
+    return ret;
+}*/

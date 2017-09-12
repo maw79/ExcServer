@@ -12,6 +12,7 @@ using namespace std;
 struct custList{
     Customer cust;
     custList *next;
+    custList *previous;
 };
 
 class CustomerList{
@@ -20,10 +21,9 @@ private:
     custList *conductor;
 public:
     CustomerList();
-    CustomerList(int numofCustomers);
 
     void makeCustomer();
-    bool deleteCustomer();
+    Customer popCustomer();
     void moveUP();
     void moveDown();
 
