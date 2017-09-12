@@ -5,7 +5,7 @@
 #include "CustomerList.h"
 
 
-CustomerList::CustomerList(Customer bob)
+void CustomerList::CreateList(Customer bob)
 {
     struct custList *s, *temp;
     temp = new(struct custList);
@@ -74,92 +74,33 @@ void CustomerList::delete_element(Customer value)
         {
             tmp = q->next;
             q->next = tmp->next;
-            tmp->next->prev = q;
-            cout<<"Element Deleted"<<endl;
+            tmp->next->previous = q;
             free(tmp);
             return;
         }
         q = q->next;
     }
     /*last element deleted*/
-    if (q->next->info == value)
+    if (q->next->cust.getAccountID() == value.getAccountID())
     {
         tmp = q->next;
         free(tmp);
         q->next = NULL;
-        cout<<"Element Deleted"<<endl;
         return;
     }
-    cout<<"Element "<<value<<" not found"<<endl;
 }
 
-/*
- * If you get false back then the conductor is not at the end of the list.
- */
-
-bool CustomerList::makeCustomer()
+Customer CustomerList::getCustomer(long long int accountID)
 {
-    if(conductor->next == 0)
+    struct custList *q;
+    q = start;
+    while(q != NULL)
     {
-        Customer n;
-        conductor->previous = conductor;
-        conductor->next = new custList;
-        conductor = conductor->next;
-        conductor->cust = n;
-        conductor->next = 0;
-        return true;
+        if(q->cust.getAccountID() == accountID)
+        {
+            return q->cust;
+        }
+        q = q->next;
     }
-    else
-    {
-        return false;
-    }
-}
 
-/*
- * If you get a null back then you are not at the end of the list.
- */
-
-Customer CustomerList::popCustomer()
-{
-    Customer ret = conductor->cust;
-    //delete conductor->cust;
-    conductor->next = conductor;
-    conductor = conductor->previous;
-    conductor->next = 0;
-    return ret;
-}
-
-bool CustomerList::moveDown()
-{
-    if(conductor->next != 0)
-    {
-        conductor->next = conductor->next->next;
-        conductor->previous = conductor;
-        conductor = conductor->next;
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool CustomerList::moveUP()
-{
-    if(conductor->previous != 0)
-    {
-        conductor->previous = conductor->previous->previous;
-        conductor->next = conductor;
-        conductor = conductor->previous;
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-Customer CustomerList::getCustomer()
-{
-    return conductor->cust;
 }

@@ -7,29 +7,25 @@
 
 #include "Customer.h"
 
-using namespace std;
-
 struct custList{
     Customer cust;
     custList *next;
     custList *previous;
-}*start;
+};
 
 class CustomerList{
 private:
-    custList *root;
-    custList *conductor;
+    custList *start;
 public:
-    CustomerList(Customer bob);
+    void CreateList(Customer bob);
+    CustomerList(){start = NULL;}
 
     void Insert(Customer bob);
-    bool makeCustomer();
-    Customer popCustomer();
-    bool moveUP();
-    bool moveDown();
+    void delete_element(Customer value);
     int count();
 
-    Customer getCustomer();
+    Customer getCustomer(long long int value);
+
 };
 
 #endif //UNTITLED_CUSTOMERLIST_H

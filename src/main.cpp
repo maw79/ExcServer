@@ -37,24 +37,24 @@ int seededNum()
 void orderReq()
 {
 
-    CustomerList mainList;
-    mainList.makeCustomer();
-    mainList.makeCustomer();
-    mainList.makeCustomer();
-
-    Customer customer1 = mainList.popCustomer();
-    Product product1;
-    cout << "CUSTOMER DETAILS:" << endl;
-    cout << "Name: " << customer1.getName() << endl;
-    cout << "Address: " << customer1.getAddress() << endl;
-    cout << "Account ID: " << customer1.getAccountID() << endl;
-    cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
-    cout << "Initial Account Balance: $" << customer1.getBalance() << endl;
-    cout << "Item to buy: " << product1.getName() << endl;
-    cout << "Price of item: $" << product1.getPrice() << endl;
-    cout << "Remaining Account Balance: $" << customer1.getBalance() - product1.getPrice() << endl;
-
-    cout << endl;
+//    CustomerList mainList;
+//    mainList.makeCustomer();
+//    mainList.makeCustomer();
+//    mainList.makeCustomer();
+//
+//    Customer customer1 = mainList.popCustomer();
+//    Product product1;
+//    cout << "CUSTOMER DETAILS:" << endl;
+//    cout << "Name: " << customer1.getName() << endl;
+//    cout << "Address: " << customer1.getAddress() << endl;
+//    cout << "Account ID: " << customer1.getAccountID() << endl;
+//    cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
+//    cout << "Initial Account Balance: $" << customer1.getBalance() << endl;
+//    cout << "Item to buy: " << product1.getName() << endl;
+//    cout << "Price of item: $" << product1.getPrice() << endl;
+//    cout << "Remaining Account Balance: $" << customer1.getBalance() - product1.getPrice() << endl;
+//
+//    cout << endl;
 
     /*
     Customer customer2;
