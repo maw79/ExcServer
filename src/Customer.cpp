@@ -15,12 +15,14 @@ Customer::Customer()
     Customer::address = "P. Sherman, 42 Wallaby Way, Sydney, DEATH PLACE";
     Credit CC;
     Customer::creditC = CC;
+    Customer::accBalance = rand() % 10000;
 }
 
-Customer::Customer(string name, string address, long long int accountID, Credit creditC)
+Customer::Customer(string name, string address, long long int accountID, Credit creditC, int accBalance)
 {
     Customer::name = name;
     Customer::address = address;
     Customer::accountID = accountID;
     Customer::creditC = creditC;
+    Customer::accBalance = accBalance;
 }

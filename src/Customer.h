@@ -20,15 +20,16 @@ private:
     string address;
     Credit creditC;
     long long int accountID;
-
+    int accBalance;
 public:
     Customer();
-    Customer(string name, string address, long long int accountID, Credit creditC);
+    Customer(string name, string address, long long int accountID, Credit creditC, int accBalance);
 
     string getName(){return name;}
     string getAddress(){return address;}
     long long int getAccountID(){return accountID;}
     Credit getCC(){return creditC;}
+    int getBalance(){return accBalance;}
 };
 
 #endif //EXCSERVER_CUSTOMER_H
