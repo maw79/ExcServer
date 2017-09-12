@@ -12,6 +12,7 @@
 #include "Date.h"
 #include "Credit.h"
 #include "Product.h"
+#include "CustomerList.h"
 #include <ctime>
 using namespace std;
 
@@ -35,7 +36,13 @@ int seededNum()
  */
 void orderReq()
 {
-    Customer customer1;
+
+    CustomerList mainList;
+    mainList.makeCustomer();
+    mainList.makeCustomer();
+    mainList.makeCustomer();
+
+    Customer customer1 = mainList.popCustomer();
     Product product1;
     cout << "CUSTOMER DETAILS:" << endl;
     cout << "Name: " << customer1.getName() << endl;
