@@ -13,3 +13,11 @@ CustomerList::CustomerList()
     root->cust = first;
     conductor = root;
 }
+
+void CustomerList::makeCustomer()
+{
+    Customer add;
+    conductor->next = new custList;
+    conductor = conductor->next;
+    conductor->cust = add;
+}

@@ -24,6 +24,8 @@ public:
 
     void makeCustomer();
     bool deleteCustomer();
+    void moveUP();
+    void moveDown();
 
 
     Customer nextCustomer();
