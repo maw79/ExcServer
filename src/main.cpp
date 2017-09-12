@@ -12,6 +12,7 @@
 #include "Date.h"
 #include "Credit.h"
 #include "Product.h"
+#include "CustomerList.h"
 #include <ctime>
 using namespace std;
 
@@ -35,7 +36,13 @@ int seededNum()
  */
 void orderReq()
 {
-    Customer customer1;
+
+    CustomerList mainList;
+    mainList.makeCustomer();
+    mainList.makeCustomer();
+    mainList.makeCustomer();
+
+    Customer customer1 = mainList.popCustomer();
     Product product1;
     cout << "CUSTOMER DETAILS:" << endl;
     cout << "Name: " << customer1.getName() << endl;
@@ -46,17 +53,16 @@ void orderReq()
     cout << "Price of item: $" << product1.getPrice() << endl;
 
     cout << endl;
-
-    Customer customer2;
-    Product product2;
-    cout << "CUSTOMER DETAILS:" << endl;
-    cout << "Name: " << customer2.getName() << endl;
-    cout << "Address: " << customer2.getAddress() << endl;
-    cout << "Account ID: " << customer2.getAccountID() << endl;
-    cout << "Credit Card Number: " << customer2.getCC().getCCnum() << endl;
-    cout << "Item to buy: " << product2.getName() << endl;
-    cout << "Price of item: $" << product2.getPrice() << endl;
-
+//
+//    Customer customer2;
+//    Product product2;
+//    cout << "CUSTOMER DETAILS:" << endl;
+//    cout << "Name: " << customer2.getName() << endl;
+//    cout << "Address: " << customer2.getAddress() << endl;
+//    cout << "Account ID: " << customer2.getAccountID() << endl;
+//    cout << "Credit Card Number: " << customer2.getCC().getCCnum() << endl;
+//    cout << "Item to buy: " << product2.getName() << endl;
+//    cout << "Price of item: $" << product2.getPrice() << endl;
 
 }
 

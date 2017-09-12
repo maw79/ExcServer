@@ -13,19 +13,21 @@ struct custList{
     Customer cust;
     custList *next;
     custList *previous;
-};
+}*start;
 
 class CustomerList{
 private:
     custList *root;
     custList *conductor;
 public:
-    CustomerList();
+    CustomerList(Customer bob);
 
+    void Insert(Customer bob);
     bool makeCustomer();
     Customer popCustomer();
     bool moveUP();
     bool moveDown();
+    int count();
 
     Customer getCustomer();
 };
