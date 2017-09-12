@@ -13,6 +13,7 @@ struct custList{
     Customer cust;
     custList *next;
     custList *previous;
+
 };
 
 class CustomerList{

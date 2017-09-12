@@ -6,7 +6,8 @@
 #include <ctime>
 
 using namespace std;
-string nameArray[] = {"Bob Dillon", "James Dean", "Jimmy Hendrix", "Brian Johnson", "Steve Tyler"};
+string nameArray[] = {"Bob Dylan", "James Dean", "Jimi Hendrix", "Brian Johnson", "Steven Tyler"};
+string addressArray[] = {"Malibu, California", "Cholame, California", "Kensington, London", "Sarasota, Florida", "Manhattan, New York"};
 
 Customer::Customer()
 {
@@ -14,7 +15,7 @@ Customer::Customer()
     int ranNum = rand() % (sizeof(nameArray)/sizeof(*nameArray));
     Customer::name = nameArray[ranNum];
     Customer::accountID = rand() % 8999999999 + 1000000000;
-    Customer::address = "P. Sherman, 42 Wallaby Way, Sydney, DEATH PLACE";
+    Customer::address = addressArray[ranNum];
     Credit CC;
     Customer::creditC = CC;
     Customer::accBalance = rand() % 10000;
