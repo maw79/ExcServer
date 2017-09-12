@@ -22,10 +22,10 @@ private:
 public:
     CustomerList();
 
-    void makeCustomer();
+    bool makeCustomer();
     Customer popCustomer();
-    void moveUP();
-    void moveDown();
+    bool moveUP();
+    bool moveDown();
 
 
     Customer nextCustomer();

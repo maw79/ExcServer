@@ -15,29 +15,56 @@ CustomerList::CustomerList()
     conductor = root;
 }
 
-void CustomerList::makeCustomer()
-{
-    Customer n;
-    conductor->previous = conductor;
-    conductor->next = new custList;
-    conductor = conductor->next;
-    conductor->cust = n;
-    conductor->next = 0;
-}
+/*
+ * If you get false back then the conductor is not at the end of the list.
+ */
 
-Customer CustomerList::popCustomer()
+bool CustomerList::makeCustomer()
 {
-    custList *n = ;
-    delete conductor->cust;
-    conductor = conductor->previous;
+    if(conductor->next == 0)
+    {
+        Customer n;
+        conductor->previous = conductor;
+        conductor->next = new custList;
+        conductor = conductor->next;
+        conductor->cust = n;
+        conductor->next = 0;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 /*
-int popValue(){
-    Node *n = head;
-    int ret = n->x;
+ * If you get a null back then you are not at the end of the list.
+ */
 
-    head = head->next;
-    delete n;
-    return ret;
-}*/
+Customer CustomerList::popCustomer()
+{
+    if(conductor->next == 0)
+    {
+        Customer ret = conductor->cust;
+        delete conductor->cust;
+        conductor = conductor->previous;
+        delete conductor->next;
+        return ret;
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
+bool CustomerList::moveDown()
+{
+    if(conductor->next != 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
