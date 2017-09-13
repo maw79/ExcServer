@@ -16,12 +16,19 @@
 #include <ctime>
 using namespace std;
 
+CustomerList Bank;
+
 //testing seeded random functionality
 int seededNum()
 {
     srand(time(NULL));
     int num = rand() % 100;
     return num;
+}
+
+void makeBank()
+{
+
 }
 
 
@@ -36,13 +43,10 @@ int seededNum()
  */
 void orderReq()
 {
-
-    CustomerList Bank;
     Customer bob;
     Customer jim;
     Bank.CreateList(bob);
     Bank.Insert(jim);
-
 
     Customer customer1 = Bank.getCustomer(jim.getAccountID());
 
