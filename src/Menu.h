@@ -5,6 +5,7 @@
 #ifndef UNTITLED_MENU_H
 #define UNTITLED_MENU_H
 
+#include <iostream>
 
 void MainMenu();
 

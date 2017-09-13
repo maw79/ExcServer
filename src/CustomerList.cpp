@@ -54,11 +54,11 @@ int CustomerList::count()
     return cnt;
 }
 
-void CustomerList::delete_element(Customer value)
+void CustomerList::delete_element(long long int accountID)
 {
     struct custList *tmp, *q;
     /*first element deletion*/
-    if (start->cust.getAccountID() == value.getAccountID())
+    if (start->cust.getAccountID() == accountID)
     {
         tmp = start;
         start = start->next;
@@ -70,7 +70,7 @@ void CustomerList::delete_element(Customer value)
     while (q->next->next != NULL)
     {
         /*Element deleted in between*/
-        if (q->next->cust.getAccountID() == value.getAccountID())
+        if (q->next->cust.getAccountID() == accountID)
         {
             tmp = q->next;
             q->next = tmp->next;
@@ -81,7 +81,7 @@ void CustomerList::delete_element(Customer value)
         q = q->next;
     }
     /*last element deleted*/
-    if (q->next->cust.getAccountID() == value.getAccountID())
+    if (q->next->cust.getAccountID() == accountID)
     {
         tmp = q->next;
         free(tmp);

@@ -7,28 +7,71 @@
 //
 
 #include <iostream>
-#include <string>
+#include <stdlib.h>
 #include "Customer.h"
-#include "Date.h"
-#include "Credit.h"
 #include "Product.h"
 #include "CustomerList.h"
-#include <ctime>
 using namespace std;
 
 CustomerList Bank;
 
-//testing seeded random functionality
-int seededNum()
+void printCustInfo(Customer customer1)
 {
-    srand(time(NULL));
-    int num = rand() % 100;
-    return num;
+    cout << "CUSTOMER DETAILS:" << endl;
+    cout << "Name: " << customer1.getName() << endl;
+    cout << "Address: " << customer1.getAddress() << endl;
+    cout << "Account ID: " << customer1.getAccountID() << endl;
+    cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
+    cout << "Initial Account Balance: $" << customer1.getBalance() << endl;
+    cout << endl;
+}
+
+void Sleep(int long long time)
+{
+    int i = 0;
+    while(i < time*10000)
+    {
+        i++;
+    }
 }
 
 void makeBank()
 {
-
+    Customer first;
+    Sleep(10000);
+    Bank.CreateList(first);
+    Customer customer1;
+    Sleep(10000);
+    Customer customer2;
+    Sleep(10000);
+    Customer customer3;
+    Sleep(10000);
+    Customer customer4;
+    Sleep(10000);
+    Customer customer5;
+    Sleep(10000);
+    Customer customer6;
+    Sleep(10000);
+    Customer customer7;
+    Sleep(10000);
+    Customer customer8;
+    Bank.Insert(customer1);
+    Bank.Insert(customer2);
+    Bank.Insert(customer3);
+    Bank.Insert(customer4);
+    Bank.Insert(customer5);
+    Bank.Insert(customer6);
+    Bank.Insert(customer7);
+    Bank.Insert(customer8);
+    printCustInfo(Bank.getCustomer(first.getAccountID()));
+    printCustInfo(Bank.getCustomer(customer1.getAccountID()));
+    printCustInfo(Bank.getCustomer(customer2.getAccountID()));
+    printCustInfo(Bank.getCustomer(customer3.getAccountID()));
+    printCustInfo(Bank.getCustomer(customer4.getAccountID()));
+    printCustInfo(Bank.getCustomer(customer5.getAccountID()));
+    printCustInfo(Bank.getCustomer(customer6.getAccountID()));
+    printCustInfo(Bank.getCustomer(customer7.getAccountID()));
+    printCustInfo(Bank.getCustomer(customer8.getAccountID()));
 }
 
 
@@ -43,39 +86,12 @@ void makeBank()
  */
 void orderReq()
 {
-    Customer bob;
-    Customer jim;
-    Bank.CreateList(bob);
-    Bank.Insert(jim);
-
-    Customer customer1 = Bank.getCustomer(jim.getAccountID());
-
-    Product product1;
-    cout << "CUSTOMER DETAILS:" << endl;
-    cout << "Name: " << customer1.getName() << endl;
-    cout << "Address: " << customer1.getAddress() << endl;
-    cout << "Account ID: " << customer1.getAccountID() << endl;
-    cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
-    cout << "Initial Account Balance: $" << customer1.getBalance() << endl;
-    cout << "Item to buy: " << product1.getName() << endl;
-    cout << "Price of item: $" << product1.getPrice() << endl;
-    cout << "Remaining Account Balance: $" << customer1.getBalance() - product1.getPrice() << endl;
-
-    cout << endl;
-
-    /*
-    Customer customer2;
-    Product product2;
-    cout << "CUSTOMER DETAILS:" << endl;
-    cout << "Name: " << customer2.getName() << endl;
-    cout << "Address: " << customer2.getAddress() << endl;
-    cout << "Account ID: " << customer2.getAccountID() << endl;
-    cout << "Credit Card Number: " << customer2.getCC().getCCnum() << endl;
-    cout << "Item to buy: " << product2.getName() << endl;
-    cout << "Price of item: $" << product2.getPrice() << endl;
-     */
-
-
+//    Product product1;
+//    cout << "Item to buy: " << product1.getName() << endl;
+//    cout << "Price of item: $" << product1.getPrice() << endl;
+//    cout << "Remaining Account Balance: $" << customer1.getBalance() - product1.getPrice() << endl;
+//
+//    cout << endl;
 }
 
 /*
@@ -162,9 +178,6 @@ void invalidAccount()
 int main()
 {
     //MainMenu();
-    //cout << seededNum() << endl;
-    //cout << seededNum() << endl;
-    //cout << seededNum() << endl;
-    //cout << seededNum() << endl;
+    makeBank();
     orderReq();
 }

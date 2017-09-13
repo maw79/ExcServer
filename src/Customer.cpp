@@ -8,6 +8,7 @@
 using namespace std;
 string nameArray[] = {"Bob Dylan", "James Dean", "Jimi Hendrix", "Brian Johnson", "Steven Tyler"};
 string addressArray[] = {"Malibu, California", "Cholame, California", "Kensington, London", "Sarasota, Florida", "Manhattan, New York"};
+int zipArray[] = {};
 
 
 Customer::Customer()

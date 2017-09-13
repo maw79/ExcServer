@@ -21,7 +21,7 @@ public:
     CustomerList(){start = NULL;}
 
     void Insert(Customer bob);
-    void delete_element(Customer value);
+    void delete_element(long long int accountID);
     int count();
 
     Customer getCustomer(long long int value);

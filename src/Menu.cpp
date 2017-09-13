@@ -3,9 +3,11 @@
 //
 
 #include "Menu.h"
+#include "Customer.h"
 
 bool Select = false;
 int productID = 0;
+
 
 using namespace std;
 
