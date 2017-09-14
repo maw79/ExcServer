@@ -8,19 +8,22 @@
 using namespace std;
 string nameArray[] = {"Bob Dylan", "James Dean", "Jimi Hendrix", "Brian Johnson", "Steven Tyler"};
 string addressArray[] = {"Malibu, California", "Cholame, California", "Kensington, London", "Sarasota, Florida", "Manhattan, New York"};
-int zipArray[] = {};
+int zipArray[] = {90263, 93461, 20891, 34230,10023};
+int accountBallanceArray[] = {180000000, 20000000, 80000000, 90000000, 130000000};
+int CCArray[] = {};
 
+int nums = 1;
 
 Customer::Customer()
 {
-    srand(time(NULL));
-    int ranNum = rand() % (sizeof(nameArray)/sizeof(*nameArray));
-    Customer::name = nameArray[ranNum];
+    Customer::name = nameArray[nums];
     Customer::accountID = rand() % 8999999999 + 1000000000;
-    Customer::address = addressArray[ranNum];
+    Customer::address = addressArray[nums];
     Credit CC;
+    CC.setZip(zipArray[nums]);
     Customer::creditC = CC;
-    Customer::accBalance = rand() % 10000;
+    Customer::accBalance = accountBallanceArray[nums];
+    nums++;
 }
 
 Customer::Customer(string name, string address, long long int accountID, Credit creditC, int accBalance)

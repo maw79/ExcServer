@@ -26,3 +26,8 @@ Credit::Credit(int CCnum0,int CCnum1,int CCnum2,int CCnum3, Date expDate, int sv
     Credit::svc = svc;
     Credit::zip = zip;
 }
+
+void Credit::setZip(int num)
+{
+    Credit::zip = num;
+}

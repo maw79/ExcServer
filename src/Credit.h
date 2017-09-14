@@ -26,6 +26,8 @@ public:
     Date getExpDate(){return expDate;}
     int getSvc(){return svc;}
     int getZip(){return zip;}
+
+    void setZip(int num);
 };
 
 #endif //UNTITLED_CREDIT_H
