@@ -11,7 +11,7 @@ string addressArray[] = {"Malibu, California", "Cholame, California", "Kensingto
 int zipArray[] = {90263, 93461, 20891, 34230,10023};
 int accountBallanceArray[] = {180000000, 20000000, 80000000, 90000000, 130000000};
 
-int nums = 1;
+int nums = 0;
 
 Customer::Customer()
 {
