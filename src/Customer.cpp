@@ -10,7 +10,6 @@ string nameArray[] = {"Bob Dylan", "James Dean", "Jimi Hendrix", "Brian Johnson"
 string addressArray[] = {"Malibu, California", "Cholame, California", "Kensington, London", "Sarasota, Florida", "Manhattan, New York"};
 int zipArray[] = {90263, 93461, 20891, 34230,10023};
 int accountBallanceArray[] = {180000000, 20000000, 80000000, 90000000, 130000000};
-int CCArray[] = {};
 
 int nums = 1;
 
