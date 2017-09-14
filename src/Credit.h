@@ -28,6 +28,9 @@ public:
     int getZip(){return zip;}
 
     void setZip(int num);
+    void setSvc(int svc);
+    void setExpDate(Date expDate);
+    void setCCnum(int CCnum0,int CCnum1,int CCnum2,int CCnum3);
 };
 
 #endif //UNTITLED_CREDIT_H

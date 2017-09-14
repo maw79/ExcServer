@@ -31,3 +31,21 @@ void Credit::setZip(int num)
 {
     Credit::zip = num;
 }
+
+void Credit::setSvc(int svc)
+{
+    Credit::svc = svc;
+}
+
+void Credit::setExpDate(Date expDate)
+{
+    Credit::expDate = expDate;
+}
+
+void Credit::setCCnum(int CCnum0,int CCnum1,int CCnum2,int CCnum3
+{
+    Credit::CCnum0 = CCnum0;
+    Credit::CCnum1 = CCnum1;
+    Credit::CCnum2 = CCnum2;
+    Credit::CCnum3 = CCnum3;
+}

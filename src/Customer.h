@@ -22,7 +22,7 @@ private:
     long long int accountID;
     int accBalance;
 public:
-    Customer();
+    Customer(int nums);
     Customer(string name, string address, long long int accountID, Credit creditC, int accBalance);
 
     string getName(){return name;}
