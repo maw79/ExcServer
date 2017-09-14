@@ -42,7 +42,7 @@ void Credit::setExpDate(Date expDate)
     Credit::expDate = expDate;
 }
 
-void Credit::setCCnum(int CCnum0,int CCnum1,int CCnum2,int CCnum3
+void Credit::setCCnum(int CCnum0,int CCnum1,int CCnum2,int CCnum3)
 {
     Credit::CCnum0 = CCnum0;
     Credit::CCnum1 = CCnum1;

@@ -5,6 +5,16 @@
 #include "CustomerList.h"
 
 
+CustomerList::CustomerList()
+{
+    start = NULL;
+}
+
+CustomerList::custList::custList(Customer bob)
+{
+    cust = bob;
+}
+
 void CustomerList::CreateList(Customer bob)
 {
     struct custList *s, *temp;

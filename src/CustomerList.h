@@ -7,18 +7,18 @@
 
 #include "Customer.h"
 
-struct custList{
-    Customer cust;
-    custList *next;
-    custList *previous;
-};
-
 class CustomerList{
 private:
-    custList *start;
+
 public:
+    struct custList{
+        Customer cust;
+        custList *next;
+        custList *previous;
+        custList(Customer bob);
+    }*start;
     void CreateList(Customer bob);
-    CustomerList(){start = NULL;}
+    CustomerList();
 
     void Insert(Customer bob);
     void delete_element(long long int accountID);

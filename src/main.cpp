@@ -13,6 +13,9 @@
 #include "CustomerList.h"
 using namespace std;
 
+int customerID;
+//Customer currentCustomer;
+
 CustomerList Bank;
 
 void printCustInfo(Customer customer1)
@@ -35,43 +38,46 @@ void Sleep(int long long time)
     }
 }
 
+void MainLoop()
+{
+    while (true)
+    {
+        cout << "Input 1 for new account" << endl;
+        cout << "enter Customer ID: ";
+        cin >> customerID;
+        if(customerID == 1)
+        {
+            string name;
+            cout << "Input 1 to Cancel" << endl;
+            cout << "Input full name: ";
+            cin >> name;
+            cout << endl;
+            if (name != "1")
+            {
+                Customer C1(name);
+                Bank.Insert(C1);
+                cout << "your Account ID is : " << C1.getAccountID() << endl;
+                cout << "Make sure to write this down" << endl;
+            }
+        }
+        else if(cin.fail())
+        {
+            cout << endl;
+            cout << "We didn't understand that, please re-enter your selection" << endl;
+        }
+        else
+        {
+            cout << endl;
+            break;
+        }
+    }
+
+}
+
 void makeBank()
 {
-    Customer first;
-    Sleep(10000);
+    Customer first("Aaron");
     Bank.CreateList(first);
-    Customer customer1;
-    Sleep(10000);
-    Customer customer2;
-    Sleep(10000);
-    Customer customer3;
-    Sleep(10000);
-    Customer customer4;
-    Sleep(10000);
-    Customer customer5;
-    Sleep(10000);
-    Customer customer6;
-    Sleep(10000);
-    Customer customer7;
-    Sleep(10000);
-    Customer customer8;
-    Bank.Insert(customer1);
-    Bank.Insert(customer2);
-    Bank.Insert(customer3);
-    Bank.Insert(customer4);
-    Bank.Insert(customer5);
-    Bank.Insert(customer6);
-    Bank.Insert(customer7);
-    Bank.Insert(customer8);
-    printCustInfo(Bank.getCustomer(first.getAccountID()));
-    printCustInfo(Bank.getCustomer(customer1.getAccountID()));
-    printCustInfo(Bank.getCustomer(customer2.getAccountID()));
-    printCustInfo(Bank.getCustomer(customer3.getAccountID()));
-    printCustInfo(Bank.getCustomer(customer4.getAccountID()));
-    printCustInfo(Bank.getCustomer(customer5.getAccountID()));
-    printCustInfo(Bank.getCustomer(customer6.getAccountID()));
-    printCustInfo(Bank.getCustomer(customer7.getAccountID()));
-    printCustInfo(Bank.getCustomer(customer8.getAccountID()));
 }
 
 
@@ -177,7 +183,7 @@ void invalidAccount()
 
 int main()
 {
-    //MainMenu();
     makeBank();
-    orderReq();
+    MainLoop();
+    //orderReq();
 }
