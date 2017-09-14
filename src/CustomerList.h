@@ -7,16 +7,18 @@
 
 #include "Customer.h"
 
+struct custList{
+    Customer cust;
+    custList *next;
+    custList *previous;
+    custList();
+};
+
 class CustomerList{
 private:
-
+    custList *start;
 public:
-    struct custList{
-        Customer cust;
-        custList *next;
-        custList *previous;
-        custList(Customer bob);
-    }*start;
+
     void CreateList(Customer bob);
     CustomerList();
 
