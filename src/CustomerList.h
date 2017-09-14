@@ -8,10 +8,10 @@
 #include "Customer.h"
 
 struct custList{
-    Customer cust;
+    Customer cust = Customer(0,0,0,Credit(0,0,0,0, Date(0, 0, 0), 0, 0),0);
     custList *next;
     custList *previous;
-    custList();
+    custList(){Customer(0,0,0,Credit(0,0,0,0, Date(0, 0, 0), 0, 0),0);}
 };
 
 class CustomerList{
