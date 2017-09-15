@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <limits>
 #include "Customer.h"
-#include "Product.h"
 using namespace std;
 
 vector<Customer> customerList(100);
