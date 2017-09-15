@@ -7,16 +7,16 @@
 //
 
 #include <iostream>
+#include <vector>
 #include <stdlib.h>
 #include "Customer.h"
 #include "Product.h"
-#include "CustomerList.h"
 using namespace std;
+
+vector<Customer> customerList;
 
 int customerID;
 //Customer currentCustomer;
-
-CustomerList Bank;
 
 void printCustInfo(Customer customer1)
 {
@@ -40,12 +40,13 @@ void Sleep(int long long time)
 
 void MainLoop()
 {
+    int i = 0;
     while (true)
     {
-        cout << "Input 1 for new account" << endl;
+        cout << "Input 109 for new account" << endl;
         cout << "enter Customer ID: ";
         cin >> customerID;
-        if(customerID == 1)
+        if(customerID == 109)
         {
             string name;
             cout << "Input 1 to Cancel" << endl;
@@ -55,7 +56,8 @@ void MainLoop()
             if (name != "1")
             {
                 Customer C1(name);
-                Bank.Insert(C1);
+                customerList[i] = C1;
+
                 cout << "your Account ID is : " << C1.getAccountID() << endl;
                 cout << "Make sure to write this down" << endl;
             }
@@ -72,12 +74,6 @@ void MainLoop()
         }
     }
 
-}
-
-void makeBank()
-{
-    Customer first("Aaron");
-    Bank.CreateList(first);
 }
 
 
@@ -183,7 +179,7 @@ void invalidAccount()
 
 int main()
 {
-    makeBank();
+    customerList.reserve(100);
     MainLoop();
     //orderReq();
 }
