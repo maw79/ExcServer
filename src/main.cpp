@@ -142,10 +142,11 @@ void createOrder()
  * Return : Void
  * Functionality : System confirms approval of purchase and displays order information to customer.
  */
-/*
-void displayConfirmation()
-{
 
+void displayConfirmation(Customer C1)
+{
+    cout << "Thank you for your order " << C1.getName() << endl;
+    cout << "Your confirmation number is: " << rand() % 1000 << endl;
 }
 
 //ALTERNATIVE SEQUENCES
@@ -173,10 +174,11 @@ void invalidAccount()
                   system prompts the customer to enter a different credit card number. The
                   customer can either enter a different credit card number or cancel the order.
 */
-/*void accessDenied()
+void accessDenied()
 {
-
-}*/
+    cout << "ACCESS DENIED" << endl;
+    cout << "Enter new Credit Card number :";
+}
 
 int main()
 {
