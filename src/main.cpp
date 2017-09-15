@@ -18,6 +18,20 @@ vector<Customer> customerList(100);
 int customerID;
 //Customer currentCustomer;
 
+Customer findCustInVector(int accountID)
+{
+    Customer Cust;
+    for(int i = 0; i < 100; i++)
+    {
+        int fuckyou = customerList[i].getAccountID();
+        if(fuckyou == accountID)
+        {
+            return customerList[i];
+        }
+    }
+    return Cust;
+}
+
 void printCustInfo(Customer customer1)
 {
     cout << "CUSTOMER DETAILS:" << endl;
@@ -66,9 +80,24 @@ void MainLoop()
         {
             cout << endl;
             cout << "We didn't understand that, please re-enter your selection" << endl;
+            if (!cin)
+            {
+                cin.clear();
+                std::string ignoreLine; //read the invalid input into it
+                std::getline(cin, ignoreLine); //read the line till next space
+            }
         }
         else
         {
+            Customer c1 = findCustInVector(customerID);
+            if(c1.getAccountID() == 0)
+            {
+                cout << "We did not find that one " << endl;
+            }
+            else
+            {
+                cout << "We found you: " << c1.getName() << endl;
+            }
             cout << endl;
             break;
         }
@@ -196,7 +225,7 @@ void accessDenied()
 //    int CCnums[4];
         cout << "ACCESS DENIED" << endl;
         cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX)" << endl;
-        cout << ":";
+        cout << ": ";
         cin >> CCnum;
         cout << endl;
         string delimit = " ";
@@ -232,6 +261,7 @@ void accessDenied()
 int main()
 {
     customerList.reserve(100);
+    initializeCustomer();
     MainLoop();
     //orderReq();
 }
