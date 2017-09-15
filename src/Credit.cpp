@@ -9,7 +9,7 @@ Credit::Credit()
 {
     Credit::zip = 0;
     Credit::svc = 0;
-    Credit::expDate = Date(rand() % 30, rand() % 12, rand() % 10 + 2010);
+    Credit::expDate = Date(rand() % 12, rand() % 10 + 2010);
     Credit::CCnum0 = 0;
     Credit::CCnum1 = 0;
     Credit::CCnum2 = 0;
