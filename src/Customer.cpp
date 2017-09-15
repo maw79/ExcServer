@@ -8,7 +8,7 @@ using namespace std;
 //string nameArray[] = {"Bob Dylan", "James Dean", "Jimi Hendrix", "Brian Johnson", "Steven Tyler"};
 //string addressArray[] = {"Malibu, California", "Cholame, California", "Kensington, London", "Sarasota, Florida", "Manhattan, New York"};
 int zipArray[] = {90263, 93461, 20891, 34230,10023};
-int accountBallanceArray[] = {1800, 200, 80000, 900000, 130000};
+int accountBalanceArray[] = {1800, 200, 80000, 900000, 130000};
 int svcArray[] = {123,456,789,435,234};
 //int CC1Array[] = {1234,3423,5555,7830,1357};
 //int CC2Array[] = {1334,3456,5123,7840,2377};
@@ -35,7 +35,7 @@ Customer::Customer(string name)
     CC.setZip(zipArray[nums]);
     CC.setSvc(svcArray[nums]);
     Customer::creditC = CC;
-    Customer::accBalance = accountBallanceArray[nums];
+    Customer::accBalance = accountBalanceArray[nums];
 }
 
 Customer::Customer(string name, string address, long long int accountID, Credit creditC, int accBalance)
