@@ -72,6 +72,7 @@ void MainLoop()
             cout << endl;
             break;
         }
+        i++;
     }
 
 }
