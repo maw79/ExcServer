@@ -7,13 +7,11 @@
 
 class Date{
 public:
-    int day;
     int month;
     int year;
 
     Date();
-    Date(int day, int month, int year);
-    int getDay(){return day;}
+    Date(int month, int year);
     int getMonth(){return month;}
     int getYear(){return year;}
 };

@@ -176,8 +176,17 @@ void invalidAccount()
 */
 void accessDenied()
 {
+    string CCnum;
     cout << "ACCESS DENIED" << endl;
-    cout << "Enter new Credit Card number :";
+    cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX)" << endl;
+    cout << ":";
+    cin >> CCnum;
+    cout << endl;
+    string delimit = " ";
+    if(CCnum.find(delimit) == string::npos)
+    {
+        cout << "You entered your cedit card number wrong" << endl;
+    }
 }
 
 int main()
