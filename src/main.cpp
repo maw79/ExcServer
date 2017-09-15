@@ -35,6 +35,17 @@ Customer findCustInVector(int accountID)
     return Cust;
 }
 
+void printCustInfo(Customer customer1)
+{
+    cout << "CUSTOMER DETAILS:" << endl;
+    cout << "Name: " << customer1.getName() << endl;
+    cout << "Address: " << customer1.getAddress() << endl;
+    cout << "Account ID: " << customer1.getAccountID() << endl;
+    cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
+    cout << "Initial Account Balance: $" << customer1.getBalance() << endl;
+    cout << endl;
+}
+
 void Sleep(int long long time)
 {
     int i = 0;
@@ -50,7 +61,7 @@ void MainLoop()
     while (true)
     {
         cout << "Input Customer ID (0 for new account): ";
-        cin >> noskipws >> customerID;
+        cin >>  customerID;
         if(customerID == 0)
         {
             string name;
@@ -62,7 +73,7 @@ void MainLoop()
                 std::getline(cin, ignoreLine); //read the line till next space
             }
 
-            cin >> noskipws >> name;
+            cin >>  name;
             cout << endl;
             if (name != "1")
             {
@@ -147,13 +158,16 @@ void orderReq(Customer C1)
         if(C1.getCC().getCCnum() == "0 0 0 0")
         {
             Credit newCC;
-            char input[20];
-            cout << "Input a new credit card number: " ;
+            char input[17];
+            cout << "Input a new credit card number(No spaces): " ;
             cin.getline(input,sizeof(input));
             string newCCnum[4];
-            for(int i = 0; i < sizeof(input);i++){
-                for(int j = 0; j < sizeof();j++){
-                    newCCnum[]+=input[i];
+
+            for(int i = 0; i < sizeof(input); i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    newCCnum[j]+=input[i];
                 }
             }
 
@@ -163,15 +177,10 @@ void orderReq(Customer C1)
                 std::getline(cin, ignoreLine); //read the line till next space
             }
 
-            int CCnums[4] = {0, 0, 0, 0};
-//            size_t pos;
-//            string delimiter = " ";
-//            int i = 0;
-//            while (i < 4) {
-//                CCnums[i] = std::stoi(newCCnum.substr(0, pos));
-//                newCCnum.erase(0, pos + delimiter.length());
-//                i++;
-//            }
+            int CCnums[4] = {atoi(newCCnum[0].c_str()), atoi(newCCnum[1].c_str()), atoi(newCCnum[2].c_str()), atoi(newCCnum[3].c_str())};
+            size_t pos;
+            int i = 0;
+
             newCC.setCCnum(CCnums[0], CCnums[1], CCnums[2], CCnums[3]);
             newCC.setSvc(rand()%899-100);
             newCC.setZip(rand()%89999-10000);
@@ -179,7 +188,7 @@ void orderReq(Customer C1)
             C1.setCC(newCC);
         }
         cout << "Input 1 to use card on file or 2 for new CC: ";
-        cin >> noskipws >> option;
+        cin >>  option;
         if(option==1)
         {
             string bankA;
@@ -205,7 +214,7 @@ void orderReq(Customer C1)
         else if(option==2)
         {
             cout << "Please enter credit card number now (in the form of XXXX XXXX XXXX XXXX): ";
-            cin >> noskipws >> CCnum;
+            cin >>  CCnum;
 
             if (cin) {
                 cin.clear();
@@ -220,7 +229,7 @@ void orderReq(Customer C1)
             } else {
                 string bankA;
                 cout << "BANK: is this a valid card?: ";
-                cin >> noskipws >> bankA;
+                cin >>  bankA;
                 cout << endl;
                 if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
                     int CCnums[4];
@@ -272,14 +281,7 @@ void displayConfirmation(Customer C1)
     cout << "ORDER CONFIRMATION DETAILS:" << endl;
     cout << "Thank you for your order " << C1.getName() << "!" << endl;
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
-    if(C1.getAddress() == "")
-    {
-        cout << "Your order will be sent to: Austin, Texas;" << " Zip: " << C1.getCC().getZip() << endl;
-    }
-    else
-    {
-        cout << "Your order will be sent to: " << C1.getAddress() << "; Zip: " << C1.getCC().getZip() << endl;
-    }
+    cout << "Your order will be sent to: " << C1.getAddress() << "; Zip: " << C1.getCC().getZip() << endl;
     cout << "The order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
     C1.setBalance(C1.getBalance() - 20000000);
     cout << "Your new balance is: $" << C1.getBalance() << endl;
@@ -323,7 +325,7 @@ void accessDenied()
         {
             string bankA;
             cout << "BANK: is this a valid card?";
-            cin >> noskipws >> bankA;
+            cin >>  bankA;
             cout << endl;
             if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
             {
