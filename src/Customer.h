@@ -31,6 +31,8 @@ public:
     long long int getAccountID(){return accountID;}
     Credit getCC(){return creditC;}
     int getBalance(){return accBalance;}
+
+    void setBalance(int num){accBalance = num;}
 };
 
 #endif //EXCSERVER_CUSTOMER_H

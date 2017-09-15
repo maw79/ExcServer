@@ -144,7 +144,22 @@ void orderReq(Customer C1)
         cin >> option;
         if(option==1)
         {
-            cout << "The number for the credit card you have on file is: " << C1.getCC().getCCnum();
+            string bankA;
+            if (cin) {
+                cin.clear();
+                std::string ignoreLine; //read the invalid input into it
+                std::getline(cin, ignoreLine); //read the line till next space
+            }
+            cout << "The number for the credit card you have on file is: " << C1.getCC().getCCnum() << endl;
+            cout << "The customer has $" << C1.getBalance()
+                 << " in their account, is this transaction approved?" << endl;
+            cin >> bankA;
+            cout << endl;
+            if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
+                displayConfirmation(C1);
+            } else {
+                accessDenied();
+            }
             break;
         }
         else if(option==2)
@@ -218,7 +233,8 @@ void displayConfirmation(Customer C1)
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
     cout << "Your order will be sent to: " << C1.getAddress() << " Zip: " << C1.getCC().getZip() << endl;
     cout << "The order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
-    cout << "your new balance is: $" << C1.getBalance() - 20000000 << endl;
+    C1.setBalance(C1.getBalance() - 20000000);
+    cout << "your new balance is: $" << C1.getBalance() << endl;
 }
 
 /*
