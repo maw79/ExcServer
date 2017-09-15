@@ -153,7 +153,7 @@ void orderReq(Customer C1)
 {
     string CCnum;
     int option;
-    cout << "You have added an M1A1 Abrams Tank to your cart for $2,000,000" << endl;
+    cout << "You have added an M1A1 Abrams Tank to your cart for $20,000,000" << endl;
     while(true)
     {
         cout << "Input 1 to use card on file or 2 for new CC: ";
@@ -168,10 +168,11 @@ void orderReq(Customer C1)
             }
             cout << "The number for the credit card you have on file is: " << C1.getCC().getCCnum() << endl;
             cout << "The customer has $" << C1.getBalance()
-                 << " in their account, is this transaction approved?" << endl;
+                 << " in their account, is this transaction approved? (y or n): ";
             cin >> bankA;
             cout << endl;
-            if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
+            if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
+            {
                 displayConfirmation(C1);
             } else {
                 accessDenied();
@@ -215,7 +216,7 @@ void orderReq(Customer C1)
                         std::getline(cin, ignoreLine); //read the line till next space
                     }
                     cout << "The customer has $" << C1.getBalance()
-                         << " in their account, is this transaction approved?";
+                         << " in their account, is this transaction approved (y or no)?: ";
                     cin >> bankA;
                     cout << endl;
                     if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
@@ -245,12 +246,13 @@ void orderReq(Customer C1)
 
 void displayConfirmation(Customer C1)
 {
-    cout << "Thank you for your order " << C1.getName() << endl;
+    cout << "ORDER CONFIRMATION DETAILS:" << endl;
+    cout << "Thank you for your order " << C1.getName() << "!" << endl;
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
-    cout << "Your order will be sent to: " << C1.getAddress() << " Zip: " << C1.getCC().getZip() << endl;
+    cout << "Your order will be sent to: " << C1.getAddress() << "; Zip: " << C1.getCC().getZip() << endl;
     cout << "The order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
     C1.setBalance(C1.getBalance() - 20000000);
-    cout << "your new balance is: $" << C1.getBalance() << endl;
+    cout << "Your new balance is: $" << C1.getBalance() << endl;
 }
 
 /*
@@ -270,8 +272,7 @@ void accessDenied()
 //    size_t pos = 0;
 //    int CCnums[4];
         cout << "ACCESS DENIED" << endl;
-        cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX) or \"NO\" to cancel Transaction" << endl;
-        cout << ": ";
+        cout << "Enter new credit card number (XXXX XXXX XXXX XXXX) (no to cancel transaction): ";
         cin >> CCnum;
         cout << endl;
         char delimit = ' ';
@@ -279,7 +280,7 @@ void accessDenied()
         {
             cout << "You entered your credit card number wrong" << endl;
         }
-        else if (CCnum == "NO" || CCnum == "no")
+        else if (CCnum == "NO" || CCnum == "no" || CCnum == "n" || CCnum == "N")
         {
             break;
         }
