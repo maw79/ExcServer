@@ -155,8 +155,8 @@ void orderReq(Customer C1)
         }
 
         cout << endl;
-        string delimit = " ";
-        if(CCnum.find(delimit) != string::npos)
+        char delimit = ' ';
+        if(CCnum.find(delimit) == ' ')
         {
             cout << "You entered your cedit card number wrong" << endl;
         }
@@ -241,6 +241,7 @@ void displayConfirmation(Customer C1)
 {
     cout << "Thank you for your order " << C1.getName() << endl;
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
+    cout << "Your order will be sent to: " << C1.getAddress() << " Zip: " << C1.getCC().getZip() << endl;
 }
 
 //ALTERNATIVE SEQUENCES
@@ -280,8 +281,8 @@ void accessDenied()
         cout << ": ";
         cin >> CCnum;
         cout << endl;
-        string delimit = " ";
-        if(CCnum.find(delimit) == string::npos)
+        char delimit = ' ';
+        if(CCnum.find(delimit) == ' ')
         {
             cout << "You entered your cedit card number wrong" << endl;
         }
