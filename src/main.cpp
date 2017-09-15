@@ -187,61 +187,8 @@ void orderReq(Customer C1)
             }else{
                 accessDenied();
             }
-//        int i = 0;
-//        while((pos = CCnum.find(delimit)) != std::string::npos)
-//        {
-//            CCnums[i] = std::stoi(CCnum.substr(0, pos));
-//            CCnum.erase(0, pos + delimit.length());
-//            i++;
-//        }
         }
     }
-
-//    Product product1;
-//    cout << "Item to buy: " << product1.getName() << endl;
-//    cout << "Price of item: $" << product1.getPrice() << endl;
-//    cout << "Remaining Account Balance: $" << customer1.getBalance() - product1.getPrice() << endl;
-//
-//    cout << endl;
-}
-
-/*
- * Function : pullData()
- * Arguments : None
- * Return : Void
- * Functionality : The System will retrieve customer account information, including the customer’s credit card details.
- */
-/*
-void pullData()
-{
-    
-}
-
-/*
- * Function : bankCheck()
- * Arguments : None
- * Return : Void
- * Functionality : The System requests to a bank checking the customer’s credit card for the purchase amount and,
- *                 if approved, creates a credit card purchase authorization number.
- */
-/*
-void bankCheck()
-{
-
-}
-
-/*
- * Function : createOrder()
- * Arguments : None
- * Return : Void
- * Functionality : The system creates a delivery order containing order details, customer Id,
- *                 and credit card authorization number
- */
-
-/*
-void createOrder()
-{
-    
 }
 
 /*
@@ -256,22 +203,6 @@ void displayConfirmation(Customer C1)
     cout << "Thank you for your order " << C1.getName() << endl;
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
     cout << "Your order will be sent to: " << C1.getAddress() << " Zip: " << C1.getCC().getZip() << endl;
-}
-
-//ALTERNATIVE SEQUENCES
-
-/*
- * Function : invalidAccount()
- * Arguments : None
- * Return : Void
- * Functionality : If customer does not have an account, the system prompts the
-                   customer to provide information in order to create a new account. The
-                   customer can either enter the account information or cancel the order.
- */
-/*
-void invalidAccount()
-{
-
 }
 
 /*
@@ -314,13 +245,6 @@ void accessDenied()
             {
                 break;
             }
-//        int i = 0;
-//        while((pos = CCnum.find(delimit)) != std::string::npos)
-//        {
-//            CCnums[i] = std::stoi(CCnum.substr(0, pos));
-//            CCnum.erase(0, pos + delimit.length());
-//            i++;
-//        }
         }
     }
 }
@@ -330,5 +254,4 @@ int main()
     customerList.reserve(100);
     initializeCustomer();
     MainLoop();
-    //orderReq();
 }
