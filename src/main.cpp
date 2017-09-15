@@ -194,6 +194,7 @@ void orderReq(Customer C1)
         if(option==1)
         {
             string bankA;
+
             if (cin) {
                 cin.clear();
                 std::string ignoreLine; //read the invalid input into it
