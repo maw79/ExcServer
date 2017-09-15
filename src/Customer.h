@@ -36,6 +36,7 @@ public:
     int getBalance(){return accBalance;}
 
     void setBalance(int num){accBalance = num;}
+    void setCC(Credit CCfile){creditC = CCfile;}
 };
 
 #endif //EXCSERVER_CUSTOMER_H
