@@ -67,15 +67,31 @@ void MainLoop()
         {
             string name;
             cout << "Input full name (1 to cancel): ";
+
+            if (cin) {
+                cin.clear();
+                std::string ignoreLine; //read the invalid input into it
+                std::getline(cin, ignoreLine); //read the line till next space
+            }
+
             cin >> name;
             cout << endl;
             if (name != "1")
             {
                 Customer C1(name);
-                customerList[i] = C1;
+                customerList[i+5] = C1;
 
                 cout << "Your Account ID is: " << C1.getAccountID() << endl;
                 cout << "Make sure to write this down" << endl;
+
+                if (cin) {
+                    cin.clear();
+                    std::string ignoreLine; //read the invalid input into it
+                    std::getline(cin, ignoreLine); //read the line till next space
+                }
+
+                orderReq(C1);
+                break;
             }
         }
         else if(cin.fail())
