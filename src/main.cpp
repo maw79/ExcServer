@@ -166,6 +166,16 @@ void orderReq(Customer C1)
             cout << endl;
             if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
             {
+                int CCnums[4];
+                size_t pos;
+                string delimiter = " ";
+                int i = 0;
+                while ((pos = CCnum.find(delimiter)) != std::string::npos) {
+                    CCnums[i] = std::stoi(CCnum.substr(0, pos));
+                    CCnum.erase(0, pos + delimiter.length());
+                    i++;
+                }
+                C1.getCC().setCCnum(CCnums[0],CCnums[1],CCnums[2],CCnums[3]);
                 if (cin)
                 {
                     cin.clear();
@@ -202,6 +212,8 @@ void displayConfirmation(Customer C1)
     cout << "Thank you for your order " << C1.getName() << endl;
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
     cout << "Your order will be sent to: " << C1.getAddress() << " Zip: " << C1.getCC().getZip() << endl;
+    cout << "The order will be charged to: " << C1.getCC().getCCnum() << endl;
+    cout << "your new balance is: $" << C1.getBalance() - 20000000 << endl;
 }
 
 /*
