@@ -62,7 +62,7 @@ void MainLoop()
     while (true)
     {
         cout << "Input Customer ID (0 for new account): ";
-        cin >> customerID;
+        cin >> noskipws >> customerID;
         if(customerID == 0)
         {
             string name;
@@ -74,7 +74,7 @@ void MainLoop()
                 std::getline(cin, ignoreLine); //read the line till next space
             }
 
-            cin >> name;
+            cin >> noskipws >> name;
             cout << endl;
             if (name != "1")
             {
@@ -156,8 +156,42 @@ void orderReq(Customer C1)
     cout << "You have added an M1A1 Abrams Tank to your cart for $2,000,000" << endl;
     while(true)
     {
+        if(C1.getCC().getCCnum() == "0 0 0 0")
+        {
+            Credit newCC;
+            char input[20];
+            cout << "Input a new credit card number: " ;
+            cin.getline(input,sizeof(input));
+            string newCCnum[4];
+            for(int i = 0; i < sizeof(input);i++){
+                for(int j = 0; j < sizeof();j++){
+                    newCCnum[]+=input[i];
+                }
+            }
+
+            if (cin) {
+                cin.clear();
+                std::string ignoreLine; //read the invalid input into it
+                std::getline(cin, ignoreLine); //read the line till next space
+            }
+
+            int CCnums[4] = {0, 0, 0, 0};
+//            size_t pos;
+//            string delimiter = " ";
+//            int i = 0;
+//            while (i < 4) {
+//                CCnums[i] = std::stoi(newCCnum.substr(0, pos));
+//                newCCnum.erase(0, pos + delimiter.length());
+//                i++;
+//            }
+            newCC.setCCnum(CCnums[0], CCnums[1], CCnums[2], CCnums[3]);
+            newCC.setSvc(rand()%899-100);
+            newCC.setZip(rand()%89999-10000);
+            newCC.setExpDate(Date(05,2020));
+            C1.setCC(newCC);
+        }
         cout << "Input 1 to use card on file or 2 for new CC: ";
-        cin >> option;
+        cin >> noskipws >> option;
         if(option==1)
         {
             string bankA;
@@ -169,7 +203,7 @@ void orderReq(Customer C1)
             cout << "The number for the credit card you have on file is: " << C1.getCC().getCCnum() << endl;
             cout << "The customer has $" << C1.getBalance()
                  << " in their account, is this transaction approved?" << endl;
-            cin >> bankA;
+            cin >> noskipws >> bankA;
             cout << endl;
             if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
                 displayConfirmation(C1);
@@ -181,7 +215,7 @@ void orderReq(Customer C1)
         else if(option==2)
         {
             cout << "Please enter credit card number now (in the form of XXXX XXXX XXXX XXXX): ";
-            cin >> CCnum;
+            cin >> noskipws >> CCnum;
 
             if (cin) {
                 cin.clear();
@@ -196,7 +230,7 @@ void orderReq(Customer C1)
             } else {
                 string bankA;
                 cout << "BANK: is this a valid card?: ";
-                cin >> bankA;
+                cin >> noskipws >> bankA;
                 cout << endl;
                 if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
                     int CCnums[4];
@@ -216,7 +250,7 @@ void orderReq(Customer C1)
                     }
                     cout << "The customer has $" << C1.getBalance()
                          << " in their account, is this transaction approved?";
-                    cin >> bankA;
+                    cin >> noskipws >> bankA;
                     cout << endl;
                     if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
                         displayConfirmation(C1);
@@ -272,7 +306,7 @@ void accessDenied()
         cout << "ACCESS DENIED" << endl;
         cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX) or \"NO\" to cancel Transaction" << endl;
         cout << ": ";
-        cin >> CCnum;
+        cin >> noskipws >> CCnum;
         cout << endl;
         char delimit = ' ';
         if(CCnum.find(delimit) == ' ')
@@ -287,7 +321,7 @@ void accessDenied()
         {
             string bankA;
             cout << "BANK: is this a valid card?";
-            cin >> bankA;
+            cin >> noskipws >> bankA;
             cout << endl;
             if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
             {
