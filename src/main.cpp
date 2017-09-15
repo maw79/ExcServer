@@ -35,17 +35,6 @@ Customer findCustInVector(int accountID)
     return Cust;
 }
 
-void printCustInfo(Customer customer1)
-{
-    cout << "CUSTOMER DETAILS:" << endl;
-    cout << "Name: " << customer1.getName() << endl;
-    cout << "Address: " << customer1.getAddress() << endl;
-    cout << "Account ID: " << customer1.getAccountID() << endl;
-    cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
-    cout << "Initial Account Balance: $" << customer1.getBalance() << endl;
-    cout << endl;
-}
-
 void Sleep(int long long time)
 {
     int i = 0;
@@ -248,7 +237,14 @@ void displayConfirmation(Customer C1)
     cout << "ORDER CONFIRMATION DETAILS:" << endl;
     cout << "Thank you for your order " << C1.getName() << "!" << endl;
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
-    cout << "Your order will be sent to: " << C1.getAddress() << "; Zip: " << C1.getCC().getZip() << endl;
+    if(C1.getAddress() == "")
+    {
+        cout << "Your order will be sent to: Austin, Texas;" << " Zip: " << C1.getCC().getZip() << endl;
+    }
+    else
+    {
+        cout << "Your order will be sent to: " << C1.getAddress() << "; Zip: " << C1.getCC().getZip() << endl;
+    }
     cout << "The order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
     C1.setBalance(C1.getBalance() - 20000000);
     cout << "Your new balance is: $" << C1.getBalance() << endl;
