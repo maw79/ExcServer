@@ -2,8 +2,7 @@
 //  main.cpp
 //  Online Shopping System
 //
-//  Created by Aaron Turner, Aaron Riggs and Scott Reilman on 9/10/17.
-//  Copyright © 2017 AARONS. All rights reserved.
+//  Collaborated effort of Aaron Riggs and David Turner
 //
 
 #include <iostream>
@@ -153,7 +152,7 @@ void orderReq(Customer C1)
 {
     string CCnum;
     int option;
-    cout << "You have added an M1A1 Abrams Tank to your cart for $2,000,000" << endl;
+    cout << "You have added an M1A1 Abrams Tank to your cart for $20,000,000" << endl;
     while(true)
     {
         if(C1.getCC().getCCnum() == "0 0 0 0")
@@ -203,9 +202,10 @@ void orderReq(Customer C1)
             cout << "The number for the credit card you have on file is: " << C1.getCC().getCCnum() << endl;
             cout << "The customer has $" << C1.getBalance()
                  << " in their account, is this transaction approved?" << endl;
-            cin >> noskipws >> bankA;
+            cin >> bankA;
             cout << endl;
-            if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
+            if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
+            {
                 displayConfirmation(C1);
             } else {
                 accessDenied();
@@ -249,8 +249,8 @@ void orderReq(Customer C1)
                         std::getline(cin, ignoreLine); //read the line till next space
                     }
                     cout << "The customer has $" << C1.getBalance()
-                         << " in their account, is this transaction approved?";
-                    cin >> noskipws >> bankA;
+                         << " in their account, is this transaction approved (y or no)?: ";
+                    cin >> bankA;
                     cout << endl;
                     if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
                         displayConfirmation(C1);
@@ -279,12 +279,17 @@ void orderReq(Customer C1)
 
 void displayConfirmation(Customer C1)
 {
-    cout << "Thank you for your order " << C1.getName() << endl;
+    cout << "ORDER CONFIRMATION DETAILS:" << endl;
+    cout << "Thank you for your order " << C1.getName() << "!" << endl;
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
-    cout << "Your order will be sent to: " << C1.getAddress() << " Zip: " << C1.getCC().getZip() << endl;
+    cout << "Your order will be sent to: " << C1.getAddress() << "; Zip: " << C1.getCC().getZip() << endl;
     cout << "The order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
     C1.setBalance(C1.getBalance() - 20000000);
-    cout << "your new balance is: $" << C1.getBalance() << endl;
+    cout << "Your new balance is: $" << C1.getBalance() << endl;
+    if(C1.getBalance() < 0)
+    {
+        cout << "Bummer! You are seriously in debt for the rest of your sorry life!" << endl;
+    }
 }
 
 /*
@@ -306,14 +311,14 @@ void accessDenied()
         cout << "ACCESS DENIED" << endl;
         cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX) or \"NO\" to cancel Transaction" << endl;
         cout << ": ";
-        cin >> noskipws >> CCnum;
+        cin >> CCnum;
         cout << endl;
         char delimit = ' ';
         if(CCnum.find(delimit) == ' ')
         {
             cout << "You entered your credit card number wrong" << endl;
         }
-        else if (CCnum == "NO" || CCnum == "no")
+        else if (CCnum == "NO" || CCnum == "no" || CCnum == "n" || CCnum == "N")
         {
             break;
         }

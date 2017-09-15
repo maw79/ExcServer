@@ -1,5 +1,8 @@
 //
-// Created by arsga on 9/10/2017.
+//  Date.h
+//  Online Shopping System
+//
+//  Collaborated effort of Aaron Riggs and David Turner
 //
 
 #ifndef UNTITLED_DATE_H
