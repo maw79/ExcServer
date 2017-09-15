@@ -16,6 +16,16 @@ int svcArray[] = {123,456,789,435,234};
 //int CC4Array[] = {3244,3996,5348,7860,4387};
 //long long int accountArray[]={1234567890,6789012345,9087654321,7850276589,4543673492};
 
+Customer::Customer()
+{
+    Customer::name = "";
+    Customer::address = "";
+    Customer::accountID = 0;
+    Credit CC;
+    Customer::creditC = CC;
+    Customer::accBalance = 0;
+}
+
 Customer::Customer(string name)
 {
     int nums = rand() % 5;

@@ -13,7 +13,7 @@
 #include "Product.h"
 using namespace std;
 
-vector<Customer> customerList;
+vector<Customer> customerList(100);
 
 int customerID;
 //Customer currentCustomer;

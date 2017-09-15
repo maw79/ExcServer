@@ -7,13 +7,13 @@
 
 Credit::Credit()
 {
-    Credit::zip = rand() % 89999 + 10000;
-    Credit::svc = rand() % 899 + 100;
+    Credit::zip = 0;
+    Credit::svc = 0;
     Credit::expDate = Date(rand() % 30, rand() % 12, rand() % 10 + 2010);
-    Credit::CCnum0 = rand() % 8999 + 1000;
-    Credit::CCnum1 = rand() % 8999 + 1000;
-    Credit::CCnum2 = rand() % 8999 + 1000;
-    Credit::CCnum3 = rand() % 8999 + 1000;
+    Credit::CCnum0 = 0;
+    Credit::CCnum1 = 0;
+    Credit::CCnum2 = 0;
+    Credit::CCnum3 = 0;
 }
 
 Credit::Credit(int CCnum0,int CCnum1,int CCnum2,int CCnum3, Date expDate, int svc, int zip)
