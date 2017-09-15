@@ -61,14 +61,12 @@ void MainLoop()
     int i = 0;
     while (true)
     {
-        cout << "Input 109 for new account" << endl;
-        cout << "enter Customer ID: ";
+        cout << "Input Customer ID (0 for new account): ";
         cin >> customerID;
-        if(customerID == 109)
+        if(customerID == 0)
         {
             string name;
-            cout << "Input 1 to Cancel" << endl;
-            cout << "Input full name: ";
+            cout << "Input full name (1 to cancel): ";
             cin >> name;
             cout << endl;
             if (name != "1")
@@ -76,7 +74,7 @@ void MainLoop()
                 Customer C1(name);
                 customerList[i] = C1;
 
-                cout << "your Account ID is : " << C1.getAccountID() << endl;
+                cout << "Your Account ID is: " << C1.getAccountID() << endl;
                 cout << "Make sure to write this down" << endl;
             }
         }
@@ -97,11 +95,11 @@ void MainLoop()
             Customer c1 = findCustInVector(customerID);
             if(c1.getAccountID() == 0)
             {
-                cout << "We did not find that one " << endl;
+                cout << "Invalid Customer ID" << endl;
             }
             else
             {
-                cout << "We found you: " << c1.getName() << endl;
+                cout << "Customer name for this Account ID: " << c1.getName() << endl;
                 orderReq(c1);
             }
             cout << endl;
@@ -138,64 +136,71 @@ void initializeCustomer()
 void orderReq(Customer C1)
 {
     string CCnum;
-    cout << "You want to buy a M1A1 Abrams Tank for 20000000" << endl;
+    int option;
+    cout << "You have added an M1A1 Abrams Tank to your cart for $2,000,000" << endl;
     while(true)
     {
-        cout << "(XXXX XXXX XXXX XXXX)" << endl;
-        cout << "Please enter credit card number now: ";
-        cin >> CCnum;
-
-        if (cin)
+        cout << "Input 1 to use card on file or 2 for new CC: ";
+        cin >> option;
+        if(option==1)
         {
-            cin.clear();
-            std::string ignoreLine; //read the invalid input into it
-            std::getline(cin, ignoreLine); //read the line till next space
+            cout << "The number for the credit card you have on file is: " << C1.getCC().getCCnum();
+            break;
         }
-
-        cout << endl;
-        char delimit = ' ';
-        if(CCnum.find(delimit) == ' ')
+        else if(option==2)
         {
-            cout << "You entered your cedit card number wrong" << endl;
+            cout << "Please enter credit card number now (in the form of XXXX XXXX XXXX XXXX): ";
+            cin >> CCnum;
+
+            if (cin) {
+                cin.clear();
+                std::string ignoreLine; //read the invalid input into it
+                std::getline(cin, ignoreLine); //read the line till next space
+            }
+
+            cout << endl;
+            char delimit = ' ';
+            if (CCnum.find(delimit) == ' ') {
+                cout << "Invalid credit card number" << endl;
+            } else {
+                string bankA;
+                cout << "BANK: is this a valid card?: ";
+                cin >> bankA;
+                cout << endl;
+                if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
+                    int CCnums[4];
+                    size_t pos;
+                    string delimiter = " ";
+                    int i = 0;
+                    while ((pos = CCnum.find(delimiter)) != std::string::npos) {
+                        CCnums[i] = std::stoi(CCnum.substr(0, pos));
+                        CCnum.erase(0, pos + delimiter.length());
+                        i++;
+                    }
+                    C1.getCC().setCCnum(CCnums[0], CCnums[1], CCnums[2], CCnums[3]);
+                    if (cin) {
+                        cin.clear();
+                        std::string ignoreLine; //read the invalid input into it
+                        std::getline(cin, ignoreLine); //read the line till next space
+                    }
+                    cout << "The customer has $" << C1.getBalance()
+                         << " in their account, is this transaction approved?";
+                    cin >> bankA;
+                    cout << endl;
+                    if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
+                        displayConfirmation(C1);
+                    } else {
+                        accessDenied();
+                    }
+                    break;
+                } else {
+                    accessDenied();
+                }
+            }
         }
         else
         {
-            string bankA;
-            cout << "BANK: is this a valid card? : ";
-            cin >> bankA;
-            cout << endl;
-            if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
-            {
-                int CCnums[4];
-                size_t pos;
-                string delimiter = " ";
-                int i = 0;
-                while ((pos = CCnum.find(delimiter)) != std::string::npos) {
-                    CCnums[i] = std::stoi(CCnum.substr(0, pos));
-                    CCnum.erase(0, pos + delimiter.length());
-                    i++;
-                }
-                C1.getCC().setCCnum(CCnums[0],CCnums[1],CCnums[2],CCnums[3]);
-                if (cin)
-                {
-                    cin.clear();
-                    std::string ignoreLine; //read the invalid input into it
-                    std::getline(cin, ignoreLine); //read the line till next space
-                }
-                cout << "The customer has $" << C1.getBalance() << " in their account, is this transaction approved?";
-                cin >> bankA;
-                cout << endl;
-                if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
-                {
-                    displayConfirmation(C1);
-                }else
-                {
-                    accessDenied();
-                }
-                break;
-            }else{
-                accessDenied();
-            }
+            cout << "Invalid option" << endl;
         }
     }
 }
@@ -212,7 +217,7 @@ void displayConfirmation(Customer C1)
     cout << "Thank you for your order " << C1.getName() << endl;
     cout << "Your confirmation number is: " << rand() % 1000 << endl;
     cout << "Your order will be sent to: " << C1.getAddress() << " Zip: " << C1.getCC().getZip() << endl;
-    cout << "The order will be charged to: " << C1.getCC().getCCnum() << endl;
+    cout << "The order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
     cout << "your new balance is: $" << C1.getBalance() - 20000000 << endl;
 }
 
@@ -240,7 +245,7 @@ void accessDenied()
         char delimit = ' ';
         if(CCnum.find(delimit) == ' ')
         {
-            cout << "You entered your cedit card number wrong" << endl;
+            cout << "You entered your credit card number wrong" << endl;
         }
         else if (CCnum == "NO" || CCnum == "no")
         {
