@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
+#include <limits>
 #include "Customer.h"
 #include "Product.h"
 using namespace std;
@@ -18,13 +19,17 @@ vector<Customer> customerList(100);
 int customerID;
 //Customer currentCustomer;
 
+void displayConfirmation(Customer C1); //Display conformation prototype
+void orderReq(Customer C1); //Order request prototype
+void accessDenied();
+
 Customer findCustInVector(int accountID)
 {
     Customer Cust;
     for(int i = 0; i < 100; i++)
     {
-        int fuckyou = customerList[i].getAccountID();
-        if(fuckyou == accountID)
+        int accID = customerList[i].getAccountID();
+        if(accID == accountID)
         {
             return customerList[i];
         }
@@ -85,6 +90,7 @@ void MainLoop()
                 cin.clear();
                 std::string ignoreLine; //read the invalid input into it
                 std::getline(cin, ignoreLine); //read the line till next space
+                //std::cin.ignore(std::numeric_limits<std::streamsize>::max());
             }
         }
         else
@@ -97,6 +103,7 @@ void MainLoop()
             else
             {
                 cout << "We found you: " << c1.getName() << endl;
+                orderReq(c1);
             }
             cout << endl;
             break;
@@ -129,8 +136,53 @@ void initializeCustomer()
  * Functionality : From the main menu the customer provides order request and customer account ID to pay for purchase
  *                 as well as selecting the item to purchase.
  */
-void orderReq()
+void orderReq(Customer C1)
 {
+    string CCnum;
+    cout << "You want to buy a M1A1 Abrams Tank for 20000000" << endl;
+    while(true)
+    {
+        cout << "(XXXX XXXX XXXX XXXX)" << endl;
+        cout << "Please enter credit card number now: ";
+        cin >> CCnum;
+
+        if (cin)
+        {
+            cin.clear();
+            std::string ignoreLine; //read the invalid input into it
+            std::getline(cin, ignoreLine); //read the line till next space
+            //std::cin.ignore(std::numeric_limits<std::streamsize>::max());
+        }
+
+        cout << endl;
+        string delimit = " ";
+        if(CCnum.find(delimit) != string::npos)
+        {
+            cout << "You entered your cedit card number wrong" << endl;
+        }
+        else
+        {
+            string bankA;
+            cout << "BANK: is this a valid card? : ";
+            cin >> bankA;
+            cout << endl;
+            if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
+            {
+                displayConfirmation(C1);
+                break;
+            }else{
+                accessDenied();
+            }
+//        int i = 0;
+//        while((pos = CCnum.find(delimit)) != std::string::npos)
+//        {
+//            CCnums[i] = std::stoi(CCnum.substr(0, pos));
+//            CCnum.erase(0, pos + delimit.length());
+//            i++;
+//        }
+        }
+    }
+
 //    Product product1;
 //    cout << "Item to buy: " << product1.getName() << endl;
 //    cout << "Price of item: $" << product1.getPrice() << endl;
@@ -242,10 +294,6 @@ void accessDenied()
             if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
             {
                 break;
-            }
-            else
-            {
-                accessDenied();
             }
 //        int i = 0;
 //        while((pos = CCnum.find(delimit)) != std::string::npos)

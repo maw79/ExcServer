@@ -38,9 +38,9 @@ Customer::Customer(string name)
     Customer::accBalance = accountBalanceArray[nums];
 }
 
-Customer::Customer(string name, string address, long long int accountID, Credit creditC, int accBalance)
+Customer::Customer(string names, string address, long long int accountID, Credit creditC, int accBalance)
 {
-    Customer::name = name;
+    Customer::name = names;
     Customer::address = address;
     Customer::accountID = accountID;
     Customer::creditC = creditC;
