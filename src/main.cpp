@@ -151,7 +151,6 @@ void orderReq(Customer C1)
             cin.clear();
             std::string ignoreLine; //read the invalid input into it
             std::getline(cin, ignoreLine); //read the line till next space
-            //std::cin.ignore(std::numeric_limits<std::streamsize>::max());
         }
 
         cout << endl;
@@ -168,7 +167,22 @@ void orderReq(Customer C1)
             cout << endl;
             if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
             {
-                displayConfirmation(C1);
+                if (cin)
+                {
+                    cin.clear();
+                    std::string ignoreLine; //read the invalid input into it
+                    std::getline(cin, ignoreLine); //read the line till next space
+                }
+                cout << "The customer has $" << C1.getBalance() << " in their account, is this transaction approved?";
+                cin >> bankA;
+                cout << endl;
+                if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
+                {
+                    displayConfirmation(C1);
+                }else
+                {
+                    accessDenied();
+                }
                 break;
             }else{
                 accessDenied();
@@ -277,7 +291,7 @@ void accessDenied()
 //    size_t pos = 0;
 //    int CCnums[4];
         cout << "ACCESS DENIED" << endl;
-        cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX)" << endl;
+        cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX) or \"NO\" to cancel Transaction" << endl;
         cout << ": ";
         cin >> CCnum;
         cout << endl;
@@ -285,6 +299,10 @@ void accessDenied()
         if(CCnum.find(delimit) == ' ')
         {
             cout << "You entered your cedit card number wrong" << endl;
+        }
+        else if (CCnum == "NO" || CCnum == "no")
+        {
+            break;
         }
         else
         {
