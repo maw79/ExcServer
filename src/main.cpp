@@ -253,6 +253,10 @@ void displayConfirmation(Customer C1)
     cout << "The order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
     C1.setBalance(C1.getBalance() - 20000000);
     cout << "Your new balance is: $" << C1.getBalance() << endl;
+    if(C1.getBalance() < 0)
+    {
+        cout << "Bummer! You are seriously in debt for the rest of your sorry life!" << endl;
+    }
 }
 
 /*
