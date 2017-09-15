@@ -80,10 +80,15 @@ void MainLoop()
 void initializeCustomer()
 {
     Customer C1("Bob Dylan","Malibu, California", 1,Credit(1234,1234,1234,1234,Date(01,2018),123,90263),1800);
+    customerList[1] = C1;
     Customer C2("James Dean","Cholame, California", 2,Credit(9876,9876,9876,9876,Date(05,2019),987,93461),200);
+    customerList[2] = C2;
     Customer C3("Jimi Hendrix","Kensington, London", 3,Credit(4567,4567,4567,4567,Date(02,2018),456,20891),20000001);
+    customerList[3] = C3;
     Customer C4("Brian Johnson","Sarasota, Florida", 4,Credit(6543,6543,6543,6543,Date(12,2017),654,34230),900000);
+    customerList[4] = C4;
     Customer C5("Steven Tyler","Manhattan, New York", 5,Credit(5432,5432,5432,5432,Date(06,2019),543,10023),130000);
+    customerList[5] = C5;
 }
 
 //MAIN SEQUENCE
