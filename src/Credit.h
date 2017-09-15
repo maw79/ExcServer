@@ -1,5 +1,8 @@
 //
-// Created by arsga on 9/11/2017.
+//  Credit.h
+//  Online Shopping System
+//
+//  Collaborated effort of Aaron Riggs and David Turner
 //
 
 #ifndef UNTITLED_CREDIT_H

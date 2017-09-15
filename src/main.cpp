@@ -2,8 +2,7 @@
 //  main.cpp
 //  Online Shopping System
 //
-//  Created by Aaron Turner, Aaron Riggs and Scott Reilman on 9/10/17.
-//  Copyright © 2017 AARONS. All rights reserved.
+//  Collaborated effort of Aaron Riggs and David Turner
 //
 
 #include <iostream>

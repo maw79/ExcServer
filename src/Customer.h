@@ -1,5 +1,8 @@
 //
-// Created by arsga on 9/10/2017.
+//  Customer.h
+//  Online Shopping System
+//
+//  Collaborated effort of Aaron Riggs and David Turner
 //
 
 #ifndef EXCSERVER_CUSTOMER_H

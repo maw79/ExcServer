@@ -1,5 +1,8 @@
 //
-// Created by arsga on 9/11/2017.
+//  Credit.cpp
+//  Online Shopping System
+//
+//  Collaborated effort of Aaron Riggs and David Turner
 //
 
 #include "Credit.h"
