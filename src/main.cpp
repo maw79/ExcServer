@@ -20,7 +20,7 @@ int customerID;
 
 void displayConfirmation(Customer C1); //Display conformation prototype
 void orderReq(Customer C1); //Order request prototype
-void accessDenied();
+void approvalDenied();
 
 Customer findCustInVector(int accountID)
 {
@@ -91,7 +91,7 @@ void MainLoop()
         else if(cin.fail())
         {
             cout << endl;
-            cout << "We didn't understand that, please re-enter your selection" << endl;
+            cout << "Invalid input, please re-enter your selection" << endl;
             if (!cin)
             {
                 cin.clear();
@@ -105,14 +105,14 @@ void MainLoop()
             Customer c1 = findCustInVector(customerID);
             if(c1.getAccountID() == 0)
             {
-                cout << "Invalid Customer ID" << endl;
+                cout << "Invalid Customer ID...exiting" << endl;
+                cout << "Goodbye!" << endl;
             }
             else
             {
                 cout << "Customer name for this Account ID: " << c1.getName() << endl;
                 orderReq(c1);
             }
-            cout << endl;
             break;
         }
         i++;
@@ -147,7 +147,7 @@ void orderReq(Customer C1)
 {
     string CCnum;
     int option;
-    cout << "You have added an M1A1 Abrams Tank to your cart for $20,000,000" << endl;
+    cout << "Your shopping cart consists of:" << endl << "- 1 x M1A1 Abrams Tank.........$20,000,000" << endl;
     while(true)
     {
         option = 0;
@@ -155,7 +155,7 @@ void orderReq(Customer C1)
         {
             Credit newCC;
             char input[20];
-            cout << "Input a new credit card number(Include Spaces): " ;
+            cout << "Input a new credit card number (in the form XXXX XXXX XXXX XXXX): " ;
             cin.getline(input,sizeof(input));
             string newCCnum;
 
@@ -198,20 +198,20 @@ void orderReq(Customer C1)
             }
             cout << "The number for the credit card you have on file is: " << C1.getCC().getCCnum() << endl;
             cout << "The customer has $" << C1.getBalance()
-                 << " in their account, is this transaction approved?" << endl;
+                 << " in their account, is this transaction approved? (y or n): ";
             cin >> bankA;
             cout << endl;
             if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
             {
                 displayConfirmation(C1);
             } else {
-                accessDenied();
+                approvalDenied();
             }
             break;
         }
         else if(option==2)
         {
-            cout << "Please enter credit card number now (in the form of XXXX XXXX XXXX XXXX): ";
+            cout << "Please enter credit card number now (in the form XXXX XXXX XXXX XXXX): ";
             cin >>  CCnum;
 
             if (cin) {
@@ -226,7 +226,7 @@ void orderReq(Customer C1)
                 cout << "Invalid credit card number" << endl;
             } else {
                 string bankA;
-                cout << "BANK: is this a valid card?: ";
+                cout << "BANK: Approve this card? (y or no): ";
                 cin >>  bankA;
                 cout << endl;
                 if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
@@ -246,17 +246,17 @@ void orderReq(Customer C1)
                         std::getline(cin, ignoreLine); //read the line till next space
                     }
                     cout << "The customer has $" << C1.getBalance()
-                         << " in their account, is this transaction approved (y or no)?: ";
+                         << " in their account, is this transaction approved (y or n)?: ";
                     cin >> bankA;
                     cout << endl;
                     if (bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y") {
                         displayConfirmation(C1);
                     } else {
-                        accessDenied();
+                        approvalDenied();
                     }
                     break;
                 } else {
-                    accessDenied();
+                    approvalDenied();
                 }
             }
         }
@@ -274,15 +274,21 @@ void orderReq(Customer C1)
  * Functionality : System confirms approval of purchase and displays order information to customer.
  */
 
-void displayConfirmation(Customer C1)
-{
+void displayConfirmation(Customer C1) {
     cout << "ORDER CONFIRMATION DETAILS:" << endl;
     cout << "Thank you for your order " << C1.getName() << "!" << endl;
-    cout << "Your confirmation number is: " << rand() % 1000 << endl;
-    cout << "Your order will be sent to: " << C1.getAddress() << "; Zip: " << C1.getCC().getZip() << endl;
-    cout << "The order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
+    cout << "Order confirmation number: " << rand() % 1000 << endl;
+    if (C1.getAddress() == "")
+    {
+        cout << "Order will be sent to: Austin, Texas; Zip: " << C1.getCC().getZip() << endl;
+    }
+    else
+    {
+        cout << "Order will be sent to: " << C1.getAddress() << "; Zip: " << C1.getCC().getZip() << endl;
+    }
+    cout << "Order will be charged to credit card with number: " << C1.getCC().getCCnum() << endl;
     C1.setBalance(C1.getBalance() - 20000000);
-    cout << "Your new balance is: $" << C1.getBalance() << endl;
+    cout << "New account balance is: $" << C1.getBalance() << endl;
     if(C1.getBalance() < 0)
     {
         cout << "Bummer! You are seriously in debt for the rest of your sorry life!" << endl;
@@ -290,7 +296,7 @@ void displayConfirmation(Customer C1)
 }
 
 /*
-* Function : accessDenied()
+* Function : approvalDenied()
 * Arguments : None
 * Return : Void
 * Functionality : If authorization of the customer’s credit card is denied (e.g., invalid
@@ -298,22 +304,21 @@ void displayConfirmation(Customer C1)
                   system prompts the customer to enter a different credit card number. The
                   customer can either enter a different credit card number or cancel the order.
 */
-void accessDenied()
+void approvalDenied()
 {
     while(true)
     {
         string CCnum;
 //    size_t pos = 0;
 //    int CCnums[4];
-        cout << "ACCESS DENIED" << endl;
-        cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX) or \"NO\" to cancel Transaction" << endl;
-        cout << ": ";
+        cout << "Invalid credit necessary: APPROVAL DENIED" << endl;
+        cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX) (n to cancel): ";
         cin >> CCnum;
         cout << endl;
         char delimit = ' ';
         if(CCnum.find(delimit) == ' ')
         {
-            cout << "You entered your credit card number wrong" << endl;
+            cout << "Invalid credit card number" << endl;
         }
         else if (CCnum == "NO" || CCnum == "no" || CCnum == "n" || CCnum == "N")
         {
@@ -322,7 +327,7 @@ void accessDenied()
         else
         {
             string bankA;
-            cout << "BANK: is this a valid card?";
+            cout << "BANK: Approve this card? (y or n): ";
             cin >>  bankA;
             cout << endl;
             if(bankA == "yes" || bankA == "Yes" || bankA == "y" || bankA == "Y")
@@ -338,4 +343,6 @@ int main()
     customerList.reserve(100);
     initializeCustomer();
     MainLoop();
+    cout << endl;
+    cout << "Thank you for using the OSS! Goodbye!";
 }
