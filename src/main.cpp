@@ -16,11 +16,10 @@ using namespace std;
 vector<Customer> customerList(100);
 
 int customerID;
-//Customer currentCustomer;
 
-void displayConfirmation(Customer C1); //Display conformation prototype
+void displayConfirmation(Customer C1); //Display confirmation prototype
 void orderReq(Customer C1); //Order request prototype
-void approvalDenied();
+void approvalDenied(); //Bank approval denied prototype
 
 Customer findCustInVector(int accountID)
 {
@@ -34,26 +33,6 @@ Customer findCustInVector(int accountID)
         }
     }
     return Cust;
-}
-
-void printCustInfo(Customer customer1)
-{
-    cout << "CUSTOMER DETAILS:" << endl;
-    cout << "Name: " << customer1.getName() << endl;
-    cout << "Address: " << customer1.getAddress() << endl;
-    cout << "Account ID: " << customer1.getAccountID() << endl;
-    cout << "Credit Card Number: " << customer1.getCC().getCCnum() << endl;
-    cout << "Initial Account Balance: $" << customer1.getBalance() << endl;
-    cout << endl;
-}
-
-void Sleep(int long long time)
-{
-    int i = 0;
-    while(i < time*10000)
-    {
-        i++;
-    }
 }
 
 void MainLoop()
@@ -117,9 +96,14 @@ void MainLoop()
         }
         i++;
     }
-
 }
 
+/*
+ * Function : initializeCustomer()
+ * Arguments : None
+ * Return : Void
+ * Functionality : Initializing 5 pre-defined customers with address, CC info, and account balance
+ */
 void initializeCustomer()
 {
     Customer C1("Bob Dylan","Malibu, California", 1,Credit(1234,1234,1234,1234,Date(01,2018),123,90263),1800);
@@ -138,7 +122,7 @@ void initializeCustomer()
 
 /*
  * Function : orderReq()
- * Arguments : None
+ * Arguments : Customer C1, input of object of Customer class type
  * Return : Void
  * Functionality : From the main menu the customer provides order request and customer account ID to pay for purchase
  *                 as well as selecting the item to purchase.
@@ -269,11 +253,10 @@ void orderReq(Customer C1)
 
 /*
  * Function : displayConfirmation()
- * Arguments : None
+ * Arguments : Customer C1, input of object of Customer class type
  * Return : Void
  * Functionality : System confirms approval of purchase and displays order information to customer.
  */
-
 void displayConfirmation(Customer C1) {
     cout << "ORDER CONFIRMATION DETAILS:" << endl;
     cout << "Thank you for your order " << C1.getName() << "!" << endl;
@@ -309,8 +292,6 @@ void approvalDenied()
     while(true)
     {
         string CCnum;
-//    size_t pos = 0;
-//    int CCnums[4];
         cout << "Invalid credit necessary: APPROVAL DENIED" << endl;
         cout << "Enter new Credit Card number (XXXX XXXX XXXX XXXX) (n to cancel): ";
         cin >> CCnum;
