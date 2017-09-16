@@ -9,6 +9,7 @@
 #include <vector>
 #include <stdlib.h>
 #include <limits>
+#include <cstring>
 #include "Customer.h"
 using namespace std;
 
@@ -64,7 +65,6 @@ void MainLoop()
         cin >>  customerID;
         if(customerID == 0)
         {
-            string name;
             cout << "Input full name (1 to cancel): ";
 
             if (cin) {
@@ -73,21 +73,16 @@ void MainLoop()
                 std::getline(cin, ignoreLine); //read the line till next space
             }
 
-            cin >>  name;
+            char name[200];
+            cin.getline(name,sizeof(name));
             cout << endl;
-            if (name != "1")
+            if (name[0] != '1')
             {
                 Customer C1(name);
                 customerList[i+5] = C1;
 
                 cout << "Your Account ID is: " << C1.getAccountID() << endl;
                 cout << "Make sure to write this down" << endl;
-
-                if (cin) {
-                    cin.clear();
-                    std::string ignoreLine; //read the invalid input into it
-                    std::getline(cin, ignoreLine); //read the line till next space
-                }
 
                 orderReq(C1);
                 break;
@@ -155,31 +150,34 @@ void orderReq(Customer C1)
     cout << "You have added an M1A1 Abrams Tank to your cart for $20,000,000" << endl;
     while(true)
     {
+        option = 0;
         if(C1.getCC().getCCnum() == "0 0 0 0")
         {
             Credit newCC;
-            char input[17];
-            cout << "Input a new credit card number(No spaces): " ;
+            char input[20];
+            cout << "Input a new credit card number(Include Spaces): " ;
             cin.getline(input,sizeof(input));
-            string newCCnum[4];
+            string newCCnum;
 
             for(int i = 0; i < sizeof(input); i++)
             {
-                for(int j = 0; j < 4; j++)
-                {
-                    newCCnum[j]+=input[i];
-                }
+                newCCnum+=input[i];
             }
 
-            if (cin) {
-                cin.clear();
-                std::string ignoreLine; //read the invalid input into it
-                std::getline(cin, ignoreLine); //read the line till next space
-            }
+            char *pch;
+            char delim[] = " ";
 
-            int CCnums[4] = {atoi(newCCnum[0].c_str()), atoi(newCCnum[1].c_str()), atoi(newCCnum[2].c_str()), atoi(newCCnum[3].c_str())};
-            size_t pos;
+            pch = strtok(input,delim);
+
+            int CCnums[4] = {};
             int i = 0;
+            while(pch)
+            {
+                CCnums[i] = stoi(pch);
+                pch = strtok(NULL,delim);
+                i++;
+            }
+
 
             newCC.setCCnum(CCnums[0], CCnums[1], CCnums[2], CCnums[3]);
             newCC.setSvc(rand()%899-100);
@@ -188,7 +186,7 @@ void orderReq(Customer C1)
             C1.setCC(newCC);
         }
         cout << "Input 1 to use card on file or 2 for new CC: ";
-        cin >>  option;
+        cin >> option;
         if(option==1)
         {
             string bankA;
