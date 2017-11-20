@@ -1,12 +1,15 @@
+import java.util.Vector;
+
 public class main {
     public static void main(String[] args)
     {
         ManageInventory Man = new ManageInventory();
-        boolean tick = Man.RemoveItem(10000000);
-        if(tick){
-            System.out.println("TRUE");
-        }else{
-            System.out.println("You FAIL");
+        Man.UpdateCost(12341234, 15000);
+        Vector v = new Vector();
+        v  = Man.PullData();
+        for(int i = 0; i < v.size(); i++){
+            Vector temp = new Vector();
+            System.out.println(v.elementAt(i));
         }
         //INTERFACE: customer transaction
             //accept product ID from scanner
