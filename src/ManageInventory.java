@@ -6,8 +6,6 @@ public class ManageInventory{
     private Statement state;
     private ResultSet resSet;
 
-    private Vector vec = new Vector();
-
     public ManageInventory(){
         try{
             java.sql.Driver d=new com.mysql.jdbc.Driver();
@@ -28,7 +26,7 @@ public class ManageInventory{
         }
     }
 
-    public boolean AddITEM(String Name, int ID, int Qty, int Cost){
+    public boolean AddItem(String Name, int ID, int Qty, int Cost){
         boolean val = false;
         try{
             String QQ = "INSERT into inv_table (Name,ID,Qty,Cost) VALUES (\"" + Name + "\"," + ID + ",\"" + Qty + "\"," + Cost + ")";
@@ -64,5 +62,11 @@ public class ManageInventory{
             exep.printStackTrace();
         }
         return val;
+    }
+
+    public Vector PullData(){
+        Vector v = new Vector();
+
+        return v;
     }
 }
