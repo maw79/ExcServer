@@ -1,6 +1,13 @@
 public class main {
     public static void main(String[] args)
     {
+        ManageInventory Man = new ManageInventory();
+        boolean tick = Man.RemoveItem(10000000);
+        if(tick){
+            System.out.println("TRUE");
+        }else{
+            System.out.println("You FAIL");
+        }
         //INTERFACE: customer transaction
             //accept product ID from scanner
 

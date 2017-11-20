@@ -10,7 +10,7 @@ public class ManageInventory{
         try{
             java.sql.Driver d=new com.mysql.jdbc.Driver();
 
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "0000");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "0000");
             state = connect.createStatement();
         }catch(Exception exep){
             exep.printStackTrace();
@@ -30,7 +30,8 @@ public class ManageInventory{
         boolean val = false;
         try{
             String QQ = "INSERT into inv_table (Name,ID,Qty,Cost) VALUES (\"" + Name + "\"," + ID + ",\"" + Qty + "\"," + Cost + ")";
-            val = state.execute(QQ);
+            state.execute(QQ);
+            val = true;
         }catch(SQLException exep){
             exep.printStackTrace();
         }
@@ -43,7 +44,8 @@ public class ManageInventory{
             String QQ = "DELETE FROM inv_table";
             String Q2 = "WHERE ID='"+ ID +"';";
             String Q3 = QQ + "\n" + Q2;
-            val = state.execute(Q3);
+            state.execute(Q3);
+            val = true;
         }catch(SQLException exep){
             exep.printStackTrace();
         }
