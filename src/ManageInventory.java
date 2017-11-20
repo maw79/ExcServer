@@ -1,13 +1,14 @@
 import java.sql.*;
+import java.util.*;
 
-public class ProductTransactionData{
+public class ManageInventory{
     private connection connect;
     private Statement state;
     private ResultSet resSet;
 
     private Vector vec = new Vector();
 
-    public ProductTransactionData(){
+    public ManageInventory(){
         try{
             java.sql.Driver d=new com.mysql.jdbc.Driver();
 
