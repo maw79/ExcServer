@@ -1,8 +1,8 @@
 import java.util.Vector;
 
-public class FinacialTData {
+public class FinancialTData {
 
-    public FinacialTData(){
+    public FinancialTData(){
 
     }
 
