@@ -8,9 +8,16 @@ public class main {
         Vector v = new Vector();
         v  = Man.PullData();
         for(int i = 0; i < v.size(); i++){
-            Vector temp = new Vector();
+            //Vector temp = new Vector();
             System.out.println(v.elementAt(i));
         }
+
+        FinacialTData FinT = new FinacialTData();
+        double SubT = FinT.GetSubtotal(v);
+        double tax = FinT.GetTax(SubT);
+        System.out.println("Your Subtotal is: " + SubT + "$");
+        System.out.println("Tax: " + tax);
+        System.out.println("Total: " + FinT.GetTotal(SubT,tax));
         //INTERFACE: customer transaction
             //accept product ID from scanner
 
