@@ -86,15 +86,21 @@ public class ManageInventory{
             Statement st = connect.createStatement();
             String getFrom = ("SELECT * FROM inv_table WHERE ID = '" + IDselect + "';");
             ResultSet rs = st.executeQuery(getFrom);
-            rs.next();
-            String name = rs.getString("Name");
-            int ID = rs.getInt("ID");
-            int Qty = rs.getInt("Qty");
-            int Cost = rs.getInt("Cost");
-            v.addElement(name);
-            v.addElement(ID);
-            v.addElement(Qty);
-            v.addElement(Cost);
+            if(rs != null){
+                rs.next();
+                String name = rs.getString("Name");
+                int ID = rs.getInt("ID");
+                int Qty = rs.getInt("Qty");
+                int Cost = rs.getInt("Cost");
+                v.addElement(name);
+                v.addElement(ID);
+                v.addElement(Qty);
+                v.addElement(Cost);
+            }
+            else
+            {
+                return null;
+            }
         }catch (Exception exep){
             exep.printStackTrace();
         }
