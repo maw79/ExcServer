@@ -87,7 +87,6 @@ public class ManageInventory{
             String getFrom = ("SELECT * FROM inv_table WHERE ID = '" + IDselect + "';");
             ResultSet rs = st.executeQuery(getFrom);
             if(rs.next() == true) {
-                rs.next();
                 String name = rs.getString("Name");
                 int ID = rs.getInt("ID");
                 int Qty = rs.getInt("Qty");
