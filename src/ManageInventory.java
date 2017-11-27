@@ -84,7 +84,7 @@ public class ManageInventory{
         Vector v = new Vector();
         try{
             Statement st = connect.createStatement();
-            String getFrom = ("SELECT FROM inv_table WHERE ID = '" + IDselect + "';");
+            String getFrom = ("SELECT * FROM inv_table WHERE ID = '" + IDselect + "';");
             ResultSet rs = st.executeQuery(getFrom);
             String name = rs.getString("Name");
             int ID = rs.getInt("ID");
