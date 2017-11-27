@@ -96,6 +96,8 @@ public class ManageInventory{
                 v.addElement(ID);
                 v.addElement(Qty);
                 v.addElement(Cost);
+            }else{
+                return null;
             }
         }catch (Exception exep){
             return null;
