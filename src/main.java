@@ -6,6 +6,9 @@ public class main {
         //int choice = 0;
         Scanner input = new Scanner(System.in);
 
+        //creating new inventory
+        ManageInventory storeInv = new ManageInventory();
+
         System.out.println("MAIN MENU");
         System.out.println("1: Customer Interface");
         System.out.println("2: Manager Interface");
@@ -15,11 +18,32 @@ public class main {
         try {
             int choice = input.nextInt();
 
+
             switch (choice) {
                 case 1:
 
                     //INTERFACE: customer transaction
-                    //accept product ID from scanner
+                    Vector transaction;
+                    int productID = 1;
+
+                    while(productID!=0) {
+                        System.out.print("Enter or Scan in a Product ID (0 to finish): ");
+                        //accept product ID from scanner
+                        productID = input.nextInt();
+
+
+                        transaction = storeInv.searchData(productID);
+                        int ID = (int) transaction.get(1);
+                        //System.out.println(ID);
+                        if (ID == productID) {
+                            //System.out.println("item found!");
+                            System.out.println(transaction.get(0) + " added to cart");
+                            System.out.println();
+
+                        } else {
+                            System.out.println("item not found!");
+                        }
+                    }
 
                     //accept product quantity
 
@@ -39,16 +63,13 @@ public class main {
 
                     //print out receipt
 
-                    System.out.println("customer transaction interface");
+                    //System.out.println("customer transaction interface");
                     break;
 
                 case 2:
 
                     //INTERFACE: manager menu
                     //adding items to inventory database
-
-                    //creating new inventory
-                    ManageInventory storeInv = new ManageInventory();
 
                     //Large Items (ID 0-9)
                     storeInv.AddItem("M1 Abrams Tank", 0001, 5, 20000000);
@@ -85,6 +106,8 @@ public class main {
                     System.out.println("Your Subtotal is: $" + SubT);
                     System.out.println("Tax: $" + tax);
                     System.out.println("Total: $" + FinT.GetTotal(SubT, tax));
+
+                    storeInv.close();
 
                     break;
 
