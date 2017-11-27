@@ -86,18 +86,14 @@ public class ManageInventory{
             Statement st = connect.createStatement();
             String getFrom = ("SELECT * FROM inv_table WHERE ID LIKE '" + IDselect + "';");
             ResultSet rs = st.executeQuery(getFrom);
-            while(rs.next()){
-                String name = rs.getString("Name");
-                int ID = rs.getInt("ID");
-                int Qty = rs.getInt("Qty");
-                int Cost = rs.getInt("Cost");
-                Vector temp = new Vector();
-                temp.addElement(name);
-                temp.addElement(ID);
-                temp.addElement(Qty);
-                temp.addElement(Cost);
-                v.addElement(temp);
-            }
+            String name = rs.getString("Name");
+            int ID = rs.getInt("ID");
+            int Qty = rs.getInt("Qty");
+            int Cost = rs.getInt("Cost");
+            v.addElement(name);
+            v.addElement(ID);
+            v.addElement(Qty);
+            v.addElement(Cost);
         }catch (Exception exep){
             exep.printStackTrace();
         }
