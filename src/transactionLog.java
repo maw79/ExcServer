@@ -1,16 +1,30 @@
 import java.sql.*;
 import java.util.Vector;
 
+/*
+Class : transactionLog
+purpose : to track the transactions of users
+functions : transactionLog()
+            close()
+            AddItem()
+            pullData()
+ */
+
 public class transactionLog {
     private Connection connect;
     private Statement state;
     private ResultSet resSet;
 
+    /*
+    Function : transactionLog()
+    Purpose : to init the mySQL connection for the transactionLog class
+    use : constructor
+     */
     public transactionLog(){
         try{
             java.sql.Driver d=new com.mysql.jdbc.Driver();
 
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "root");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "0000");
             state = connect.createStatement();
         }catch(Exception exep){
             exep.printStackTrace();
@@ -18,6 +32,11 @@ public class transactionLog {
         }
     }
 
+    /*
+    Function : close()
+    Purpose : close connection to mySQL database
+    use : transactionLog.close()
+     */
     public void close(){
         try{
             connect.close();
@@ -26,6 +45,11 @@ public class transactionLog {
         }
     }
 
+    /*
+    Function : AddItem()
+    Purpose : Add purchased item to the mySQL database
+    use : transactionLog.AddItem(name, ID, Qty, Cost)
+     */
     public boolean AddItem(String Name, int ID, int Qty, int Cost){
         boolean val = false;
         try{
@@ -38,6 +62,11 @@ public class transactionLog {
         return val;
     }
 
+    /*
+    Function : PullData()
+    Purpose : Return a vector of all items stored in the table for this item
+    use : transactionLog.PullData()
+     */
     public Vector PullData(){
         Vector v = new Vector();
         try{
