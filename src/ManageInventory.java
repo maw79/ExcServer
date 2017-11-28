@@ -10,7 +10,7 @@ public class ManageInventory{
         try{
             java.sql.Driver d=new com.mysql.jdbc.Driver();
 
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "root");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "0000");
             state = connect.createStatement();
         }catch(Exception exep){
             exep.printStackTrace();
