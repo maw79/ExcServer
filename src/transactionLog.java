@@ -24,7 +24,7 @@ public class transactionLog {
         try{
             java.sql.Driver d=new com.mysql.jdbc.Driver();
 
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "0000");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "root");
             state = connect.createStatement();
         }catch(Exception exep){
             exep.printStackTrace();
