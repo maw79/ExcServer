@@ -62,6 +62,20 @@ public class transactionLog {
         return val;
     }
 
+    public boolean AddTransaction(Vector v)
+    {
+        try{
+            for(int i = 0; i < v.size(); i++){
+                Vector temp = new Vector();
+                temp = (Vector)v.elementAt(i);
+                AddItem((String)temp.get(0),(int)temp.get(1),1,(int)temp.get(3));
+            }
+        }catch (Exception exep){
+            exep.printStackTrace();
+        }
+
+    }
+
     /*
     Function : PullData()
     Purpose : Return a vector of all items stored in the table for this item
