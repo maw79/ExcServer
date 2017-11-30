@@ -62,13 +62,44 @@ public class transactionLog {
         return val;
     }
 
+    public boolean UpdateQty(int ID, int Qty){
+        boolean val = false;
+        try{
+            String QQ = "UPDATE inv_table";
+            String Q2 = "SET Qty = "+ Qty;
+            String Q3 = "WHERE ID = "+ ID;
+            String QF = QQ + "\n" + Q2 + "\n" + Q3;
+            val = state.execute(QF);
+        }catch(SQLException exep){
+            exep.printStackTrace();
+        }
+        return val;
+    }
+
+    public boolean IncQty(int ID)
+    {
+        try{
+            Vector v = new Vector();
+            v = searchData(ID);
+            int i = (int)v.get(2);
+            UpdateQty(ID, i+1);
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+
     public boolean AddTransaction(Vector v)
     {
         try{
             for(int i = 0; i < v.size(); i++){
                 Vector temp = new Vector();
                 temp = (Vector)v.elementAt(i);
-                AddItem((String)temp.get(0),(int)temp.get(1),1,(int)temp.get(3));
+                if(searchData((int)temp.get(1)) != null){
+                    IncQty((int)temp.get(1));
+                }else{
+                    AddItem((String)temp.get(0),(int)temp.get(1),1,(int)temp.get(3));
+                }
             }
         }catch (Exception exep){
             exep.printStackTrace();
@@ -101,6 +132,31 @@ public class transactionLog {
             }
         }catch(Exception exep){
             exep.printStackTrace();
+        }
+        return v;
+    }
+
+
+    public Vector searchData(int IDselect){
+        Vector v = new Vector();
+        try{
+            Statement st = connect.createStatement();
+            String getFrom = ("SELECT * FROM inv_table WHERE ID = '" + IDselect + "';");
+            ResultSet rs = st.executeQuery(getFrom);
+            if(rs.next() == true) {
+                String name = rs.getString("Name");
+                int ID = rs.getInt("ID");
+                int Qty = rs.getInt("Qty");
+                int Cost = rs.getInt("Cost");
+                v.addElement(name);
+                v.addElement(ID);
+                v.addElement(Qty);
+                v.addElement(Cost);
+            }else{
+                return null;
+            }
+        }catch (Exception exep){
+            return null;
         }
         return v;
     }
