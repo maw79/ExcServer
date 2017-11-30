@@ -6,20 +6,18 @@ public class FinancialTData {
 
     }
 
-    public double GetSubtotal(Vector v){
-        double subT = 0;
+    public int GetSubtotal(Vector v){
+        int subT = 0;
         for(int i = 0; i < v.size(); i++){
             Vector temp = new Vector();
             temp = (Vector)v.elementAt(i);
-            for(int j = 0; j < (int)temp.elementAt(2);j++) {
-                subT = subT + (int)temp.elementAt(3);
-            }
+            subT = subT + (int)temp.elementAt(3);
         }
         return subT;
     }
 
-    public double GetTax(double SubT){
-        double tax = (SubT * .1);
+    public float GetTax(float SubT){
+        float tax = (SubT / 10);
         return tax;
     }
 
