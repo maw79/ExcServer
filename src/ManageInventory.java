@@ -17,7 +17,7 @@ public class ManageInventory{
             System.out.println("Error: " + exep);
         }
     }
-
+    //close
     public void close(){
         try{
             connect.close();
@@ -87,6 +87,19 @@ public class ManageInventory{
             v = searchData(ID);
             int i = (int)v.get(2);
             UpdateQty(ID, i-1);
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean IncQty(int ID)
+    {
+        try{
+            Vector v = new Vector();
+            v = searchData(ID);
+            int i = (int)v.get(2);
+            UpdateQty(ID, i+1);
         }catch(Exception e){
             return false;
         }
