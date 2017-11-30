@@ -73,7 +73,7 @@ public class transactionLog {
         }catch (Exception exep){
             exep.printStackTrace();
         }
-
+        return true;
     }
 
     /*
