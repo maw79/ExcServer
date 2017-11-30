@@ -17,7 +17,7 @@ public class ManageInventory{
             System.out.println("Error: " + exep);
         }
     }
-
+    //close
     public void close(){
         try{
             connect.close();
