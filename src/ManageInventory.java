@@ -80,6 +80,19 @@ public class ManageInventory{
         return val;
     }
 
+    public boolean DecQty(int ID)
+    {
+        try{
+            Vector v = new Vector();
+            v = searchData(ID);
+            int i = (int)v.get(2);
+            UpdateQty(ID, i-1);
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+
     public Vector searchData(int IDselect){
         Vector v = new Vector();
         try{
