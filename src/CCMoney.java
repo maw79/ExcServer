@@ -8,7 +8,7 @@ public class CCMoney {
 		String name, CCNum, CVV, zip, type;
 		double total = 235.69;
 		int start = 1;
-		int passOrFail;
+		int passOrFail, AuthNum, tempPin = 0;
 		
 		Scanner input = new Scanner(System.in);
 		Random rand = new Random();
@@ -32,11 +32,11 @@ public class CCMoney {
 		
 		if (type.startsWith("Debit")) {
 			System.out.println("Please enter your pin for the Debit Card: ");
-			int tempPin = input.nextInt();
+			tempPin = input.nextInt();
 		}
 		
 		
-		while(start == 1) {
+		/**while(start == 1) {
 			passOrFail = rand.nextInt(100000)+1;
 			if (passOrFail < 50000) {
 				System.out.println("The card was declined.");
@@ -71,6 +71,68 @@ public class CCMoney {
 				System.out.printf("\nPayment is successful. Last 4 digits of the card: %s. Confirmation number: %d.\n",CCNum.substring(CCNum.length()-4, CCNum.length()),confirmationNumber);
 				first.total=0;
 				start = 0;
+			}
+		}**/
+		Banksies bank = new Banksies();
+		while(start == 1){
+			if(type.startsWith("D")){
+				if (bank.BankDebit(tempPin, CCNum, CVV, total)){
+					passOrFail = rand.nextInt(100000)+1;
+					AuthNum = passOrFail * (rand.nextInt(10)+1);
+					System.out.printf("\nPayment is successful. Last 4 digits of the card: %s. Confirmation number: %d.\n",CCNum.substring(CCNum.length()-4, CCNum.length()),AuthNum);
+					start = 0;
+				}
+				else{
+					System.out.println("The card was declined.");
+					System.out.println("Would you like to try another debit card? (Y or N)");
+					String answer = input.nextLine();
+					if (answer.startsWith("Y")) {
+						System.out.println("What is the name on the card?");
+						name = input.nextLine();
+						System.out.println("What is the 16 digit card number?");
+						CCNum = input.nextLine();
+						System.out.println("What is the security code on the back?");
+						CVV = input.nextLine();
+						System.out.println("What is the billing zipcode?");
+						zip = input.nextLine();
+						System.out.println("Please enter your pin for the Debit Card: ");
+						tempPin = input.nextInt();
+						continue;
+					}
+					else {
+						start = 0;
+						break;
+					}
+
+				}
+			}
+			else if (type.startsWith("C")){
+				if(bank.BankCredit(CCNum, CVV, total)){
+					passOrFail = rand.nextInt(100000)+1;
+					AuthNum = passOrFail *(rand.nextInt(10)+1);
+					System.out.printf("\nPayment is successful. Last 4 digits of the card: %s. Confirmation number: %d.\n",CCNum.substring(CCNum.length()-4, CCNum.length()),AuthNum);
+					start = 0;
+				}
+				else{
+					System.out.println("The card was declined.");
+					System.out.println("Would you like to try another credit card? (Y or N)");
+					String answer = input.nextLine();
+					if (answer.startsWith("Y")){
+						System.out.println("What is the name on the card?");
+						name = input.nextLine();
+						System.out.println("What is the 16 digit card number?");
+						CCNum = input.nextLine();
+						System.out.println("What is the security code on the back?");
+						CVV = input.nextLine();
+						System.out.println("What is the billing zipcode?");
+						zip = input.nextLine();
+						continue;
+					}
+					else{
+						start = 0;
+						break;
+					}
+				}
 			}
 		}
 		
