@@ -5,6 +5,7 @@
  */
 package InterfacePackages;
 
+import java.util.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -42,9 +43,31 @@ public class CustOrder extends HttpServlet {
                     RequetsDispatcherObj.forward(request, response);
                 }
             }*/
+            ManageInventory manInv = new ManageInventory();
+            Vector vecInv = new Vector();
+            vecInv = manInv.PullData();
             
-            RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/OrderConfirmation.jsp");
-            RequetsDispatcherObj.forward(request, response);
+            Vector v = new Vector();
+            for(int i = 0; i < vecInv.size();i++){
+                v.add(request.getParameter("qty" + i));
+            }
+            
+            request.setAttribute("v", v);
+            
+            //int qtty = Integer.parseInt(request.getParameter("qty0"));
+            //Vector V = new Vector();
+            //V = (Vector)request.getParameter("vecInv");
+            //V = (Vector)vecInv.get(ii);
+            //V.add(qtty);
+            //vecInv.set(ii, V);
+            //pageContext.setAttribute("vecInv", vecInv);
+            if(v.get(0) == null){
+                RequestDispatcher RequestDispatcherObj = request.getRequestDispatcher("/BTOD.jsp");
+                RequestDispatcherObj.forward(request, response);
+            }else{
+                RequestDispatcher RequestDispatcherObj = request.getRequestDispatcher("/OrderConfirmation.jsp");
+                RequestDispatcherObj.forward(request, response);
+            }
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -52,6 +75,10 @@ public class CustOrder extends HttpServlet {
             out.println("<title>Servlet CustOrder</title>");            
             out.println("</head>");
             out.println("<body>");
+//            out.println(v.size());
+//            for(int i = 0; i < v.size();i++){
+//                out.println(v.get(i)+ ":num \n");
+//            }
             out.println("<h1>Loading...</h1>");
             out.println("<div>What do you want?! A dino game?! Be patient!</div>");
             out.println("</body>");

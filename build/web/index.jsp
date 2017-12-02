@@ -18,8 +18,8 @@ and open the template in the editor.
         <form action="CustOrder" method="POST">
             <table border ="1">
                 <tr>
-                    <td>Item No</td>
-                    <td>Item Name</td>
+                    <td>Product ID</td>
+                    <td>Product Name</td>
                     <td>Cost</td>
                     <td>In Stock</td>
                     <td>Qty</td>
@@ -35,14 +35,29 @@ and open the template in the editor.
                         Vector temp = new Vector();
                         temp = (Vector)vecInv.get(ii);
                         String name = (String)temp.get(0);
-                        pageContext.setAttribute("name", name);%>
-                        <c:set var="Name" value="${name}" />
+                        pageContext.setAttribute("name", name);
+                        
+                        int IDi = (int)temp.get(1);
+                        String ID = Integer.toString(IDi);
+                        pageContext.setAttribute("ID", ID);
+                        
+                        int stocki = (int)temp.get(2);
+                        String stock = Integer.toString(stocki);
+                        pageContext.setAttribute("stock", stock);
+                        
+                        int costi = (int)temp.get(3);
+                        String cost = Integer.toString(costi);//do it
+                        pageContext.setAttribute("cost", cost);%>
                     <tr>
-                        <td><c:out value = "${Name}" escapeXml="false"/></td>
-                        <td><%temp.get(1);%></td>
-                        <td><%temp.get(2);%></td>
-                        <td><%temp.get(3);%></td>
-                        <td><input type="integer" name=names ></input></td>
+                        <td>${ID}</td>
+                        <td>${name}</td>
+                        <td>${cost}</td>
+                        <td>${stock}</td>
+                        <%
+                            String nme = "qty" + Integer.toString(ii);
+                            pageContext.setAttribute("nme", nme);
+                        %>
+                        <td><input type="integer" name=${nme} ></input></td>
                     </tr>
                            <% } %>
             </table>
