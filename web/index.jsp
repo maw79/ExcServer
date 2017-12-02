@@ -35,13 +35,24 @@ and open the template in the editor.
                         Vector temp = new Vector();
                         temp = (Vector)vecInv.get(ii);
                         String name = (String)temp.get(0);
-                        pageContext.setAttribute("name", name);%>
-                        <c:set var="Name" value="${name}" />
+                        pageContext.setAttribute("name", name);
+                        
+                        int IDi = (int)temp.get(1);
+                        String ID = Integer.toString(IDi);
+                        pageContext.setAttribute("ID", ID);
+                        
+                        int qtyi = (int)temp.get(2);
+                        String qty = Integer.toString(qtyi);
+                        pageContext.setAttribute("qty", qty);
+                        
+                        int costi = (int)temp.get(3);
+                        String cost = Integer.toString(costi);
+                        pageContext.setAttribute("cost", cost);%>
                     <tr>
-                        <td><c:out value = "${Name}" escapeXml="false"/></td>
-                        <td><%temp.get(1);%></td>
-                        <td><%temp.get(2);%></td>
-                        <td><%temp.get(3);%></td>
+                        <td>${ID}</td>
+                        <td>${name}</td>
+                        <td>${cost}</td>
+                        <td>${qty}</td>
                         <td><input type="integer" name=names ></input></td>
                     </tr>
                            <% } %>
