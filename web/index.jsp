@@ -46,7 +46,7 @@ and open the template in the editor.
                         pageContext.setAttribute("qty", qty);
                         
                         int costi = (int)temp.get(3);
-                        String cost = Integer.toString(costi);
+                        String cost = Integer.toString(costi);//do it
                         pageContext.setAttribute("cost", cost);%>
                     <tr>
                         <td>${ID}</td>
