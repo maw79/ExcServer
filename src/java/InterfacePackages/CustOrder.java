@@ -52,7 +52,7 @@ public class CustOrder extends HttpServlet {
                 v.add(request.getParameter("qty" + i));
             }
             
-            request.setAttribute("v", v);
+            //request.setAttribute("v", v);
             
             //int qtty = Integer.parseInt(request.getParameter("qty0"));
             //Vector V = new Vector();
@@ -61,7 +61,7 @@ public class CustOrder extends HttpServlet {
             //V.add(qtty);
             //vecInv.set(ii, V);
             //pageContext.setAttribute("vecInv", vecInv);
-            if(v.get(0) == null){
+            if((int)v.get(0) == 0){
                 RequestDispatcher RequestDispatcherObj = request.getRequestDispatcher("/BTOD.jsp");
                 RequestDispatcherObj.forward(request, response);
             }else{
