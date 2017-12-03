@@ -16,12 +16,12 @@ and open the template in the editor.
             <tr>Welcome to the Cash Payment System!</tr>
             <tr>
                 <%
-                String total = "";
-                total = (String)pageContext.findAttribute("total");
-                pageContext.setAttribute("total", total);
+                String totals = "";
+                totals = (String)pageContext.findAttribute("total");
+                pageContext.setAttribute("totals", totals);
                 %>
                 <td>Total Due: </td>
-                <td>${total}</td>
+                <td>${totals}</td>
             </tr>
             <form action="CashPayment" method="POST">
             <tr>
