@@ -52,13 +52,10 @@ public class CustOrder extends HttpServlet {
                 v.add(request.getParameter("qty" + i));
                 request.removeAttribute("qty" + i);
             }
-            
-            
-            //request.setAttribute("v", v);
-            
             for(int i = 0; i < v.size();i++){
-                request.setAttribute("v"+Integer.toString(i), v.get(i));
+                request.setAttribute("v"+i, v.get(i));
             }
+            request.setAttribute("size", v.size());
             
             //int qtty = Integer.parseInt(request.getParameter("qty0"));
             //Vector V = new Vector();

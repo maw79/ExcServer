@@ -14,10 +14,14 @@ and open the template in the editor.
         <%--retrieve total variable--%>
         <table border ="0">
             <tr>Welcome to the Cash Payment System!</tr>
-            
             <tr>
+                <%
+                String total = "";
+                total = (String)pageContext.findAttribute("total");
+                pageContext.setAttribute("total", total);
+                %>
                 <td>Total Due: </td>
-                <td>!!!!</td>
+                <td>${total}</td>
             </tr>
             <form action="CashPayment" method="POST">
             <tr>

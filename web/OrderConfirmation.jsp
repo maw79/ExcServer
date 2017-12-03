@@ -17,46 +17,98 @@
     <body>
         <div>Order Confirmation:</div>
         <tr>Please confirm your order below.</tr>
+        <form action="CustOrder" method="POST">
+            <table border ="1">
+                <tr>
+                    <td>Product ID</td>
+                    <td>Product Name</td>
+                    <td>Cost</td>
+                    <td>Qty</td>
+                </tr>
         
                 <%
+                    Vector v = new Vector();
+                    int size = (int)pageContext.findAttribute("size");
+
+                    ManageInventory manInv = new ManageInventory();
                     Vector vecInv = new Vector();
-                    vecInv = (Vector)pageContext.findAttribute("v");
+                    vecInv = manInv.PullData();
+                    
+                    int sub = 0, tax = 0, total = 0;
+                    
+//                    for(int i = 0; i < size;i++){
+//                        String buy = (String)pageContext.findAttribute("v" + i);
+//                        pageContext.setAttribute("buy", buy);
+//                    }
+                    
+                    for(int i = 0; i < size; i++)
+                    {
+                        v.add(pageContext.findAttribute("v"+i));
+                    }
                     for(int ii=0; ii<vecInv.size(); ii++){
-                        String names = "qty" + Integer.toString(ii);
-                        Vector temp = new Vector();
-                        temp = (Vector)vecInv.get(ii);
-                        String name = (String)temp.get(0);
-                        pageContext.setAttribute("name", name);
+                        pageContext.setAttribute("name", null);
+                        pageContext.setAttribute("ID", null);
+                        pageContext.setAttribute("cost", null);
+                        pageContext.setAttribute("buy", null);
                         
-                        int IDi = (int)temp.get(1);
-                        String ID = Integer.toString(IDi);
-                        pageContext.setAttribute("ID", ID);
+                        if(Integer.parseInt((String)v.get(ii)) != 0){
+                            
+                            Vector temp = new Vector();
+                            temp = (Vector)vecInv.get(ii);
+                            String name = (String)temp.get(0);
+                            pageContext.setAttribute("name", name);
+
+                            int IDi = (int)temp.get(1);
+                            String ID = Integer.toString(IDi);
+                            pageContext.setAttribute("ID", ID);
+
+                            int costi = (int)temp.get(3);
+                            String cost = Integer.toString(costi);
+                            pageContext.setAttribute("cost", cost);
+
+                            int buyi = Integer.parseInt((String)v.get(ii));
+                            String buy = Integer.toString(buyi);
+                            pageContext.setAttribute("buy", buy);
+                        }
                         
-                        int stocki = (int)temp.get(2);
-                        String stock = Integer.toString(stocki);
-                        pageContext.setAttribute("stock", stock);
-                        
-                        int costi = (int)temp.get(3);
-                        String cost = Integer.toString(costi);//do it
-                        pageContext.setAttribute("cost", cost);
-                        
-                        int buyi = (int)temp.get(4);
-                        String buy = Integer.toString(buyi);
-                        pageContext.setAttribute("buy", buy);
                 %>
                 <tr>
                     <td>${ID}</td>
                     <td>${name}</td>
                     <td>${cost}</td>
-                    <td>${stock}</td>
-                    <td>${qty}</td>
+                    <td>${buy}</td>
                 </tr>
+            </table>
+        </form>
                 <tr>
-                       <% } %>
-                <tr>Subtotal: !!! </tr>
-                <tr>     Tax: !!! </tr>
-                <tr>   Total: !!! </tr>
-                
+                     <% } 
+                        for(int i = 0; i < size;i++)
+                        {
+                            Vector temp = new Vector();
+                            temp = (Vector)vecInv.get(i);
+                            if(Integer.parseInt((String)v.get(i)) != 0)
+                            {
+                                for(int j = 0; j < Integer.parseInt((String)v.get(i)); j++){
+                                    sub = sub + (int)temp.get(3);
+                                }
+                            }
+                        }
+                        String subs = Integer.toString(sub);
+                        pageContext.setAttribute("subs", subs);
+
+                        tax = (sub / 10);
+                        String taxs = Integer.toString(tax);
+                        pageContext.setAttribute("taxs", taxs);
+
+                        total = sub + tax;
+                        String tot = Integer.toString(total);
+                        pageContext.setAttribute("tot", tot);
+                       %>
+                <tr><br>------------------</tr>
+                <tr><br>Subtotal: ${subs} </tr>
+                <tr><br>     Tax: ${taxs} </tr>
+                <tr><br>   Total: ${tot}  </tr>
+        
         <table>
             <tr>
                 <td><form action="PayCash" method="POST">

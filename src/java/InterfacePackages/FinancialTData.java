@@ -16,8 +16,8 @@ public class FinancialTData {
         return subT;
     }
 
-    public float GetTax(float SubT){
-        float tax = (SubT / 10);
+    public int GetTax(int SubT){
+        int tax = (SubT / 10);
         return tax;
     }
 

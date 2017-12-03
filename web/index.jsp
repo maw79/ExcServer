@@ -57,7 +57,7 @@ and open the template in the editor.
                             String nme = "qty" + Integer.toString(ii);
                             pageContext.setAttribute("nme", nme);
                         %>
-                        <td><input type="integer" name=${nme} ></input></td>
+                        <td><input type="integer" name=${nme} value="0"></input></td>
                     </tr>
                            <% } %>
             </table>
