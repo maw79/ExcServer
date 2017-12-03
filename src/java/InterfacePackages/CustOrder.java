@@ -50,9 +50,15 @@ public class CustOrder extends HttpServlet {
             Vector v = new Vector();
             for(int i = 0; i < vecInv.size();i++){
                 v.add(request.getParameter("qty" + i));
+                request.removeAttribute("qty" + i);
             }
             
+            
             //request.setAttribute("v", v);
+            
+            for(int i = 0; i < v.size();i++){
+                request.setAttribute("v"+Integer.toString(i), v.get(i));
+            }
             
             //int qtty = Integer.parseInt(request.getParameter("qty0"));
             //Vector V = new Vector();
@@ -61,13 +67,8 @@ public class CustOrder extends HttpServlet {
             //V.add(qtty);
             //vecInv.set(ii, V);
             //pageContext.setAttribute("vecInv", vecInv);
-            if((int)v.get(0) == 0){
-                RequestDispatcher RequestDispatcherObj = request.getRequestDispatcher("/BTOD.jsp");
-                RequestDispatcherObj.forward(request, response);
-            }else{
-                RequestDispatcher RequestDispatcherObj = request.getRequestDispatcher("/OrderConfirmation.jsp");
-                RequestDispatcherObj.forward(request, response);
-            }
+            RequestDispatcher RequestDispatcherObj = request.getRequestDispatcher("/OrderConfirmation.jsp");
+            RequestDispatcherObj.forward(request, response);
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
