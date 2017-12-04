@@ -13,24 +13,38 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>Welcome to the Interactive Purchase Order System!</div>
-        <div>Please proceed with your purchase below.</div>
+    <center>
+        <h1>Welcome to the Interactive Purchase Order System!</h1>
+        </br>
+        <div>Please Specify Quantity to Purchase</div>
         <form action="CustOrder" method="POST">
             <table border ="1">
                 <tr>
                     <td>Product ID</td>
                     <td>Product Name</td>
                     <td>Cost</td>
-                    <td>In Stock</td>
-                    <td>Qty</td>
+                    <td>Inventory Stock</td>
+                    <td>Quantity to Purchase</td>
                 </tr>
                 <%
                     ManageInventory manInv = new ManageInventory();
                     Vector vecInv = new Vector();
+                    session.setAttribute("manInv",manInv);
                     vecInv = manInv.PullData();
 
                     //merchandise.size()
                     for(int ii=0; ii<vecInv.size(); ii++){
+                        int size = vecInv.size();
+                        session.setAttribute("size", size);
+                        //session.setAttribute("vinv"+ii, vecInv.get(ii));
+                        Vector t = new Vector();
+                        t = (Vector)vecInv.get(ii);
+                        
+                        session.setAttribute("vinv-name-"+ii, t.get(0));
+                        session.setAttribute("vinv-ID-"+ii, t.get(1));
+                        session.setAttribute("vinv-inv-"+ii, t.get(2));
+                        session.setAttribute("vinv-cost-"+ii, t.get(3));
+                        
                         String names = "qty" + Integer.toString(ii);
                         Vector temp = new Vector();
                         temp = (Vector)vecInv.get(ii);
@@ -66,8 +80,9 @@ and open the template in the editor.
         <form action="ManagerMenu" method="POST">
             <input type="submit" value="Manager Menu">
         </form>
-        <form action="RestockerMenu" method="POST">
+        <form action="RestockerInt.jsp">
             <input type="submit" value="Restocker Menu">
         </form>
+    </center>
     </body>
 </html>

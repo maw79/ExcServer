@@ -36,6 +36,28 @@ public class ProdUpdate extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            ManageInventory manInv = new ManageInventory();
+            
+            String strID = request.getParameter("itemName");
+            String strQty = request.getParameter("cost");
+            String strCost = request.getParameter("qty");
+            
+            if (strID==null){
+                RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/BSOD.jsp");
+                RequetsDispatcherObj.forward(request, response);
+            }
+            
+            int ID = Integer.parseInt(strID);
+            if (strQty!=null){
+                int Qty = Integer.parseInt(strQty);
+                manInv.UpdateQty(ID, Qty);
+            }
+            
+            if (strQty!=null){
+                int Cost = Integer.parseInt(strCost);
+                manInv.UpdateCost(ID, Cost);
+            }
+            
             RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/ManagerInt.jsp");
             RequetsDispatcherObj.forward(request, response);
             

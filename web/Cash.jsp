@@ -13,23 +13,18 @@ and open the template in the editor.
     <body>
         <%--retrieve total variable--%>
         <table border ="0">
-            <tr>Welcome to the Cash Payment System!</tr>
+            <tr>Cash Payment System</tr>
             <tr>
                 <%
-                String totals = "";
-                totals = (String)pageContext.findAttribute("total");
-                pageContext.setAttribute("totals", totals);
+                    String money = (String)session.getAttribute("total");
+                    pageContext.setAttribute("money", money);
                 %>
-                <td>Total Due: </td>
-                <td>${totals}</td>
-            </tr>
-            <form action="CashPayment" method="POST">
-            <tr>
-                <td>Enter Payment Amount:</td>
-                <td><input name="cash" id="cash" type="number" step=".01"></input>
+                <td>Payment Approved, Please take receipt! <br> Your change has been donated to the Wounded Warrior Project!</td>
+                <td>${money}</td>
             </tr>
         </table>
-            <input type="submit" value="Insert Cash">
-            </form>
+            <td><form action="indexReturn" method="POST">
+            <input type="submit" value="Start new order">
+        </form></td>
     </body>
 </html>

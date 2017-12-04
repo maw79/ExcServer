@@ -15,7 +15,8 @@ and open the template in the editor.
     <body>
         <div>Welcome to the Interactive Purchase Order System!</div>
         <div>Please proceed with your purchase below.</div>
-        <table border ="1">
+        <form action="ProdAdd" method="POST">
+            <table border ="1">
             <tr>
                 <td>Item No</td>
                 <td>Item Name</td>
@@ -23,17 +24,17 @@ and open the template in the editor.
                 <td>In Stock</td>
             </tr>
             <tr>
-                <td><input input="itemNo"></input></td>
-                <td><input input="itemName"></input></td>
-                <td><input input="cost"></input></td>
-                <td><input input="qty"></input></td>
+                <td><input input="itemNo" name="itemNo"></input></td>
+                <td><input input="itemName" name="itemName"></input></td>
+                <td><input input="cost" name="cost"></input></td>
+                <td><input input="qty" name="qty"></input></td>
             </tr>
         </table>
+        
+            <input type="submit" value="Submit and Return">
+        </form>
         <form action="ManagerMenu" method="POST">
             <input type="submit" value="Cancel and Return">
-        </form>
-        <form action="ProdAdd" method="POST">
-            <input type="submit" value="Submit and Return">
         </form>
     </body>
 </html>

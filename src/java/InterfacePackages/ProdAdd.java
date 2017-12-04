@@ -5,6 +5,7 @@
  */
 package InterfacePackages;
 
+import java.util.Vector;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -35,6 +36,19 @@ public class ProdAdd extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+            String Name = request.getParameter("itemNo");
+            String strID = request.getParameter("itemName");
+            String strQty = request.getParameter("cost");
+            String strCost = request.getParameter("qty");
+            
+            int ID = Integer.parseInt(strID);
+            int Qty = Integer.parseInt(strQty);
+            int Cost = Integer.parseInt(strCost);
+            
+            ManageInventory manInv = new ManageInventory();            
+            manInv.AddItem(Name, ID, Qty, Cost);
+
             
             RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/ManagerInt.jsp");
             RequetsDispatcherObj.forward(request, response);

@@ -30,7 +30,8 @@
                     Vector v = new Vector();
                     int size = (int)pageContext.findAttribute("size");
 
-                    ManageInventory manInv = new ManageInventory();
+                    //ManageInventory manInv = new ManageInventory();
+                    ManageInventory manInv = (ManageInventory)session.getAttribute("manInv");
                     Vector vecInv = new Vector();
                     vecInv = manInv.PullData();
                     
@@ -46,6 +47,8 @@
                         v.add(pageContext.findAttribute("v"+i));
                     }
                     for(int ii=0; ii<vecInv.size(); ii++){
+                        session.setAttribute("v"+ii, v.get(ii));
+                        
                         pageContext.setAttribute("name", null);
                         pageContext.setAttribute("ID", null);
                         pageContext.setAttribute("cost", null);
@@ -69,6 +72,7 @@
                             int buyi = Integer.parseInt((String)v.get(ii));
                             String buy = Integer.toString(buyi);
                             pageContext.setAttribute("buy", buy);
+                            
                         }
                         
                 %>
@@ -79,6 +83,7 @@
                     <td>${buy}</td>
                 </tr>
             </table>
+        <table>
         </form>
                 <tr>
                      <% } 
@@ -103,16 +108,19 @@
                         total = sub + tax;
                         String tot = Integer.toString(total);
                         pageContext.setAttribute("tot", tot);
+
+                        session.setAttribute("total", tot);
                        %>
                 <tr><br>------------------</tr>
                 <tr><br>Subtotal: ${subs} </tr>
                 <tr><br>     Tax: ${taxs} </tr>
                 <tr><br>   Total: ${tot}  </tr>
+                <tr><br>Pay now? </tr>
+<tr><input type="String" name="test" value=${tot}></input></tr>
         
-        <table>
             <tr>
                 <td><form action="PayCash" method="POST">
-            <input type="submit" value="Pay By Cash">
+            <input type="submit" value="Pay By Cash" name="Cash">
         </form></td>
                 <td><form action="PayCard" method="POST">
             <input type="submit" value="Pay By Card">

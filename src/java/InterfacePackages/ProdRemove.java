@@ -36,6 +36,13 @@ public class ProdRemove extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            String strID = request.getParameter("itemName");
+            
+            int ID = Integer.parseInt(strID);
+            
+            ManageInventory manInv = new ManageInventory();            
+            manInv.RemoveItem(ID);
+            
             RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/ManagerInt.jsp");
             RequetsDispatcherObj.forward(request, response);
             

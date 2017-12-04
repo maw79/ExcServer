@@ -7,6 +7,7 @@ package InterfacePackages;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +37,29 @@ public class RestockInventory extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/RestockerInt.jsp");
+            ManageInventory manInv = new ManageInventory();
+            Vector vecInv = new Vector();
+            vecInv = manInv.PullData();
+            
+            Vector v = new Vector();
+            for(int i = 0; i < vecInv.size();i++){
+                v.add(request.getParameter("qty" + i));
+                request.removeAttribute("qty" + i);
+            }
+            for(int i = 0; i < v.size();i++){
+                request.setAttribute("v"+i, v.get(i));
+            }
+            for(int i = 0; i < v.size();i++)
+            {
+                Vector temp = new Vector();
+                temp = (Vector)vecInv.get(i);
+                int ID = (int)temp.get(1);
+                int Qty = (int)temp.get(2);
+                int add = Integer.parseInt((String)v.get(i));
+                manInv.UpdateQty(ID, Qty + add);
+            }
+            
+            RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/index.jsp");
             RequetsDispatcherObj.forward(request, response);
             
             out.println("<!DOCTYPE html>");
