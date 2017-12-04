@@ -13,11 +13,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Order Confirmation</title>
+        <title>Receipt</title>
     </head>
     <body>
-        <div>Order Confirmation:</div>
-        <tr>Please confirm your order below.</tr>
+        <div>Receipt:</div>
+        <tr>Here is what you have bought with us today.</tr>
         
         <%
                 Vector v = new Vector();
@@ -57,11 +57,26 @@
                     pageContext.setAttribute("subt", sub);
                     pageContext.setAttribute("totalM", tot);
                     
+                    for(int i = 0;i<size;i++){
+                        pageContext.setAttribute("N",null);
+                        pageContext.setAttribute("C",null);
+                        pageContext.setAttribute("Num",null);
+                        int T = Integer.parseInt((String)v.get(i));
+                        if(T != 0){
+                            Vector temp = new Vector();
+                            temp = (Vector)vecInv.get(i);
+                            pageContext.setAttribute("N",(String)temp.get(0));
+                            pageContext.setAttribute("C",temp.get(3));
+                            pageContext.setAttribute("Num",Integer.parseInt((String)v.get(i)));
+                        
         %>
-                <tr><% %></tr>
-                <tr>Subtotal: $ ${subt} </tr>
-                <tr>     Tax: $ ${taxs} </tr>
-                <tr>   Total: $ ${totalM} </tr>
+                <tr><br> Item : ${N} $ ${C}  #: ${Num} </tr>
+<%                      }
+                    } 
+                %>
+                <tr><br>Subtotal: $ ${subt} </tr>
+                <tr><br>     Tax: $ ${taxs} </tr>
+                <tr><br>   Total: $ ${totalM} </tr>
                 
         <form action="indexReturn" method="POST">
         <input type="submit" value="Return to Menu">
