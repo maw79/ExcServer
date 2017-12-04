@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <%@page import = "java.util.*"%>
 <%@page import = "InterfacePackages.ManageInventory"%>
+<%@page import = "InterfacePackages.transactionLog"%>
 <html>
     <head>
         <title>Customer Interface</title>
@@ -31,6 +32,9 @@ and open the template in the editor.
                     Vector vecInv = new Vector();
                     session.setAttribute("manInv",manInv);
                     vecInv = manInv.PullData();
+                    
+                    transactionLog tra = new transactionLog();
+                    session.setAttribute("tra", tra);
 
                     //merchandise.size()
                     for(int ii=0; ii<vecInv.size(); ii++){

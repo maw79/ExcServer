@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <%@page import = "java.util.*"%>
 <%@page import = "InterfacePackages.ManageInventory"%>
+<%@page import = "InterfacePackages.transactionLog"%>
 <html>
     <head>
         <title>Customer Interface</title>
@@ -32,6 +33,9 @@ and open the template in the editor.
                     
                     String money = (String)session.getAttribute("total");
                     pageContext.setAttribute("money", money);
+                    
+                    transactionLog tra = (transactionLog)session.getAttribute("tra");
+                    
                     for(int i = 0; i < v.size();i++){
                         int T = Integer.parseInt((String)v.get(i));
                         Vector temp = new Vector();
@@ -40,10 +44,12 @@ and open the template in the editor.
                             int ID = (int)temp.get(1);
                             for(int j = 0;j < Integer.parseInt((String)v.get(i));j++)
                             {
+                                tra.AddItem((String)temp.get(0), (int)temp.get(1), Integer.parseInt((String)v.get(i)), (int)temp.get(3));
                                 manInv.DecQty(ID);
                             }
                         }
                     }
+                    
                 %>
                 <td>Payment Approved, Please take receipt! <br> Your change has been donated to the Wounded Warrior Project!</td>
                 <%--<td>${money}</td>--%>

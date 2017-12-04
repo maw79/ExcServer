@@ -100,10 +100,12 @@
                         }
                         String subs = Integer.toString(sub);
                         pageContext.setAttribute("subs", subs);
+                        session.setAttribute("subtot", subs);
 
                         tax = (sub / 10);
                         String taxs = Integer.toString(tax);
                         pageContext.setAttribute("taxs", taxs);
+                        session.setAttribute("taxes", taxs);
 
                         total = sub + tax;
                         String tot = Integer.toString(total);
