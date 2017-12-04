@@ -37,10 +37,10 @@ public class ProdAdd extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String Name = request.getParameter("itemNo");
-            String strID = request.getParameter("itemName");
-            String strQty = request.getParameter("cost");
-            String strCost = request.getParameter("qty");
+            String strID = request.getParameter("itemNo");
+            String Name = request.getParameter("itemName");
+            String strCost = request.getParameter("cost");
+            String strQty = request.getParameter("qty");
             
             int ID = Integer.parseInt(strID);
             int Qty = Integer.parseInt(strQty);

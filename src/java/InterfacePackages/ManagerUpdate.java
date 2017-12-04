@@ -7,6 +7,7 @@ package InterfacePackages;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Scott
+ * @author arsga
  */
-@WebServlet(name = "ProdUpdate", urlPatterns = {"/ProdUpdate"})
-public class ProdUpdate extends HttpServlet {
+@WebServlet(name = "ManagerUpdate", urlPatterns = {"/ManagerUpdate"})
+public class ManagerUpdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,40 +35,45 @@ public class ProdUpdate extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
-            ManageInventory manInv = new ManageInventory();
+            String strID = request.getParameter("itemID");
+            String strCost = request.getParameter("cost");
+            String strQty = request.getParameter("qty");
             
-            String strID = request.getParameter("itemName");
-            String strQty = request.getParameter("cost");
-            String strCost = request.getParameter("qty");
-            
-            if (strID==null){
+            if(strID == null){
                 RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/BSOD.jsp");
                 RequetsDispatcherObj.forward(request, response);
             }
             
             int ID = Integer.parseInt(strID);
-            if (strQty!=null){
-                int Qty = Integer.parseInt(strQty);
-                manInv.UpdateQty(ID, Qty);
-            }
+            ManageInventory manInv = new ManageInventory();
             
-            if (strQty!=null){
+            if(strQty == null){
                 int Cost = Integer.parseInt(strCost);
                 manInv.UpdateCost(ID, Cost);
+            }else if(strCost == null){
+                int Qty = Integer.parseInt(strQty);
+                manInv.UpdateQty(ID, Qty);
+            }else{
+                int Qty = Integer.parseInt(strQty);
+                int Cost = Integer.parseInt(strCost);
+                manInv.UpdateCost(ID, Cost);
+                manInv.UpdateQty(ID, Qty);
             }
             
             RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/ManagerInt.jsp");
             RequetsDispatcherObj.forward(request, response);
             
+            
+            
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateProd</title>");            
+            out.println("<title>Servlet ManagerUpdate</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateProd at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ManagerUpdate at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

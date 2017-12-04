@@ -82,6 +82,7 @@
                     <td>${cost}</td>
                     <td>${buy}</td>
                 </tr>
+                
             </table>
         <table>
         </form>
@@ -118,10 +119,11 @@
                 <tr><br>     Tax: ${taxs} </tr>
                 <tr><br>   Total: ${tot}  </tr>
                 <tr><br>Pay now? </tr>
-<tr><input type="integer" name=cashpay value=${tot}></input></tr>
+
         
             <tr>
                 <td><form action="PayCash" method="POST">
+                        <tr><input type="integer" name=cashpay value=${tot}></input></tr>
                         <input type="submit" value="Pay By Cash" name="Cash">
         </form></td>
                 <td><form action="PayCredit" method="POST">

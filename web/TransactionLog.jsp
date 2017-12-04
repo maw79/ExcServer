@@ -6,6 +6,8 @@
 
 <%-- <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import = "java.util.*"%>
+<%@page import = "InterfacePackages.transactionLog"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,14 +19,19 @@
         <div>Please confirm your order below.</div>
         
         <%
-                class order{
-                public int order[];
-                public int size=5;
-                }
-                
-                for(int ii=0; ii< 5; ii++)
-                {%>
-                <div><% %>Transaction 1</div>
+                Vector curLog = new Vector();
+                transactionLog Tlog = (transactionLog)session.getAttribute("tra");
+                curLog = Tlog.PullData();
+                for(int i=0; i< curLog.size(); i++)
+                {
+                    Vector temp = new Vector();
+                    temp = (Vector)curLog.get(i);
+                    pageContext.setAttribute("Name",(String)temp.get(0));
+                    pageContext.setAttribute("ID",temp.get(1));
+                    pageContext.setAttribute("Stk",temp.get(2));
+                    pageContext.setAttribute("Cost",temp.get(3));
+        %>
+                <div><% %>Item : ${Name} $ ${Cost}  #: ${ID}  QtySold: ${Stk}</div>
                        <% } %>
         <form action="indexReturn" method="POST">
         <input type="submit" value="Log Out">

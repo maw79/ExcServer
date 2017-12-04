@@ -36,7 +36,7 @@ public class ProdRemove extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String strID = request.getParameter("itemName");
+            String strID = request.getParameter("itemNum");
             
             int ID = Integer.parseInt(strID);
             

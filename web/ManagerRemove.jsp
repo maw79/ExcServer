@@ -15,20 +15,20 @@ and open the template in the editor.
     <body>
         <div>Welcome to the Interactive Purchase Order System!</div>
         <div>Please proceed with your purchase below.</div>
-        <form action="ManagerMenu" method="POST">
+        <form action="ProdRemove" method="POST">
             <table border ="1">
             <tr>
                 <td>Item No</td>
             </tr>
             <tr>
-                <td><input input="itemNo"></input></td>
+                <td><input type="integer" input="itemNum" name="itemNum"></input></td>
             </tr>
             </table>
         
-            <input type="submit" value="Cancel and Return">
-        </form>
-        <form action="ProdRemove" method="POST">
             <input type="submit" value="Submit and Return">
+        </form>
+        <form action="ManagerMenu" method="POST">
+            <input type="submit" value="Cancel and Return">
         </form>
     </body>
 </html>

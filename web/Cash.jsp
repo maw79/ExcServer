@@ -31,21 +31,38 @@ and open the template in the editor.
                     Vector vecInv = new Vector();
                     vecInv = manInv.PullData();
                     
+                    int total1 = (int)request.getAttribute("total1");
+                    
                     String money = (String)session.getAttribute("total");
                     pageContext.setAttribute("money", money);
                     
-                    transactionLog tra = (transactionLog)session.getAttribute("tra");
+                    if(total1 < Integer.parseInt(money))
+                    {
+                        RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/BSOD.jsp");
+                        RequetsDispatcherObj.forward(request, response);
+                    }
                     
+                    transactionLog tra = (transactionLog)session.getAttribute("tra");
+                    Vector Tlog = new Vector();
+                    Tlog = tra.PullData();
                     for(int i = 0; i < v.size();i++){
                         int T = Integer.parseInt((String)v.get(i));
                         Vector temp = new Vector();
                         temp = (Vector)vecInv.get(i);
                         if(T != 0){
                             int ID = (int)temp.get(1);
+                            Vector t2 = new Vector();
+                            t2 = tra.searchData(ID);
                             for(int j = 0;j < Integer.parseInt((String)v.get(i));j++)
                             {
-                                tra.AddItem((String)temp.get(0), (int)temp.get(1), Integer.parseInt((String)v.get(i)), (int)temp.get(3));
-                                manInv.DecQty(ID);
+                                if(tra.searchData(ID) == null){
+                                    tra.AddItem((String)temp.get(0), (int)temp.get(1), Integer.parseInt((String)v.get(i)) + (int)t2.get(2), (int)temp.get(3));
+                                    manInv.DecQty(ID);
+                                }else{
+                                    tra.UpdateQty(ID, Integer.parseInt((String)v.get(i)) + (int)t2.get(2));
+                                    //tra.AddItem((String)temp.get(0), (int)temp.get(1), Integer.parseInt((String)v.get(i)) + (int)t2.get(2), (int)temp.get(3));
+                                    manInv.DecQty(ID);
+                                }
                             }
                         }
                     }
