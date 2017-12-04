@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Scott
  */
-@WebServlet(name = "PayCard", urlPatterns = {"/PayCard"})
-public class PayCard extends HttpServlet {
+@WebServlet(name = "PayDebit", urlPatterns = {"/PayDebit"})
+public class PayDebit extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +36,7 @@ public class PayCard extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/Card.jsp");
+            RequestDispatcher RequetsDispatcherObj =request.getRequestDispatcher("/Debit.jsp");
             RequetsDispatcherObj.forward(request, response);
             
             out.println("<!DOCTYPE html>");

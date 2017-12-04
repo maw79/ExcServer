@@ -35,9 +35,9 @@ public class PayCash extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-//            String total = "NOOOOOOOOOOOOOOOOOOOOOOOO";
-//            total = (String)request.getParameter("test");
-//            request.setAttribute("total", total);
+            //int total = 0;
+            //total = Integer.parseInt((String)request.getParameter("cashpay"));
+            //request.setAttribute("total", total);
             
             RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/Cash.jsp");
             RequetsDispatcherObj.forward(request, response);
@@ -49,7 +49,7 @@ public class PayCash extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet PayCash at " + request.getContextPath() + "</h1>");
-//            out.println(total);
+            //out.println(total);
             out.println("</body>");
             out.println("</html>");
         }

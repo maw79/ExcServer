@@ -12,7 +12,7 @@ and open the template in the editor.
     </head>
     <body>
         <div>Welcome to the Credit Card Payment System!</div>
-        <form action="PayCard" method="POST">
+        <form action="CardPayment" method="POST">
             <table border ="0">
             <tr>
                 <td><br>Name on Card: <input type="string" name="name"></input></td>                
@@ -21,6 +21,7 @@ and open the template in the editor.
                 <td><br>Zip Code: <input type="string" name="zip"></input></td>
             </tr>
             </table>
+            <input type="submit" value="Pay">
         </form> 
     </body>
 </html>

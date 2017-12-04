@@ -50,7 +50,6 @@ public class CustOrder extends HttpServlet {
             Vector v = new Vector();
             for(int i = 0; i < vecInv.size();i++){
                 v.add(request.getParameter("qty" + i));
-                request.removeAttribute("qty" + i);
             }
             for(int i = 0; i < v.size();i++){
                 request.setAttribute("v"+i, v.get(i));

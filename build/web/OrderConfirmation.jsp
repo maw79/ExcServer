@@ -17,7 +17,7 @@
     <body>
         <div>Order Confirmation:</div>
         <tr>Please confirm your order below.</tr>
-        <form action="CustOrder" method="POST">
+        <form action="PayCash" method="POST">
             <table border ="1">
                 <tr>
                     <td>Product ID</td>
@@ -116,14 +116,17 @@
                 <tr><br>     Tax: ${taxs} </tr>
                 <tr><br>   Total: ${tot}  </tr>
                 <tr><br>Pay now? </tr>
-<tr><input type="String" name="test" value=${tot}></input></tr>
+<tr><input type="integer" name=cashpay value=${tot}></input></tr>
         
             <tr>
                 <td><form action="PayCash" method="POST">
-            <input type="submit" value="Pay By Cash" name="Cash">
+                        <input type="submit" value="Pay By Cash" name="Cash">
         </form></td>
-                <td><form action="PayCard" method="POST">
-            <input type="submit" value="Pay By Card">
+                <td><form action="PayCredit" method="POST">
+            <input type="submit" value="Pay By Credit">
+        </form></td>
+                <td><form action="PayDebit" method="POST">
+            <input type="submit" value="Pay By Debit">
         </form></td>
                 <td><form action="indexReturn" method="POST">
             <input type="submit" value="Cancel Order">
